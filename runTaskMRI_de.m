@@ -1,9 +1,9 @@
-function runTaskMRI
+function runTaskMRI_de
 
 % directory of BIDS data in relation to this script
 dataDirectory = 'data';
 rootDirectory = pwd; % directory of the script
-
+language = 'de';
 % Defining the constants: timing parameters (in seconds)
 allTaskNames = {'nct2.1', 'nct2.2', 'nct1', 'phono', 'lexi', 'morpho', 'syntax'};
 
@@ -42,13 +42,14 @@ fprintf('Skip practice? %d\n', skipPractice);
 
 
 % Create log entry with task parameters defined above:
-loggedParameters = sprintf(['stimulus font size: %d pt (instructions are 75 percent of that); ', ...
+loggedParameters = sprintf(['language (ISO-639-1): %s; ', ...
+                            'stimulus font size: %d pt (instructions are 75 percent of that); ', ...
                             'font-family: "%s"; ', ...
                             'practice loop can be exited with more than %d percent correct; ', ...
                             'fixation star with %d corners was presented for %d ms; ', ...
                             'the stimulus was presented for %d ms; ', ...
                             'a pause occured during testing every %d trials for %d s'], ...
-                           fontSize, fontFamily, practiceLoopPercent*100, ...
+                           language, fontSize, fontFamily, practiceLoopPercent*100, ...
                            fixationStarCorners, fixationDuration*1000, ...
                            stimulusDuration*1000, ...
                            nBlock, pauseSeconds);
@@ -90,27 +91,27 @@ fprintf('Task Name: %s\n', task);
 
 %% load instructions:
 
-anyKeyToContinue = fileread("instructions/scanner/press_any_key_to_continue.txt");
+anyKeyToContinue = fileread("instructions/scanner/press_any_key_to_continue."+language+".txt");
 
-longInstructions  = fileread(sprintf("instructions/instructions_%s_long.txt", taskName));
+longInstructions  = fileread(sprintf("instructions/instructions_%s_long.%s.txt", taskName, language));
 longInstructions  = strcat(longInstructions, '\n\n', anyKeyToContinue);
-shortInstructions = fileread(sprintf("instructions/instructions_%s_short.txt", taskName));
+shortInstructions = fileread(sprintf("instructions/instructions_%s_short.%s.txt", taskName, language));
 shortInstructions = strcat(shortInstructions, '\n\n', anyKeyToContinue);
 
-feedbackNoResponse = fileread("instructions/practice/feedback_no_response.txt");
-feedbackCorrect    = fileread("instructions/practice/feedback_correct.txt");
-feedbackIncorrect  = fileread("instructions/practice/feedback_incorrect.txt");
-practiceStarting   = fileread("instructions/practice/practice_starting.txt");
-continuePracticing = fileread("instructions/practice/continue_practicing.txt");
-practiceFinished   = fileread("instructions/practice/practice_finished.fr.txt");
+feedbackNoResponse = fileread("instructions/practice/feedback_no_response."+language+".txt");
+feedbackCorrect    = fileread("instructions/practice/feedback_correct."+language+".txt");
+feedbackIncorrect  = fileread("instructions/practice/feedback_incorrect."+language+".txt");
+practiceStarting   = fileread("instructions/practice/practice_starting."+language+".txt");
+continuePracticing = fileread("instructions/practice/continue_practicing."+language+".txt");
+practiceFinished   = fileread("instructions/practice/practice_finished."+language+".txt");
 
-waitingForScanner = fileread("instructions/scanner/waiting_for_scanner.fr.txt");
-scanningFieldmaps = fileread("instructions/scanner/recording_field_maps_fr.txt");
+waitingForScanner = fileread("instructions/scanner/waiting_for_scanner."+language+".txt");
+scanningFieldmaps = fileread("instructions/scanner/recording_field_maps."+language+".txt");
 
-taskStarts    = fileread("instructions/task/task_starts.txt");
-shortPause    = fileread("instructions/task/short_pause.txt");
-taskContinues = fileread("instructions/task/task_continues.txt");
-taskComplete  = fileread("instructions/task/task_complete.txt");
+taskStarts    = fileread("instructions/task/task_starts."+language+".txt");
+shortPause    = fileread("instructions/task/short_pause."+language+".txt");
+taskContinues = fileread("instructions/task/task_continues."+language+".txt");
+taskComplete  = fileread("instructions/task/task_complete."+language+".txt");
 
 % Create a path to output files (CSV and LOG files):
 outputPath = fullfile(rootDirectory, dataDirectory, sprintf('sub-%s', subject), 'beh');
@@ -746,7 +747,7 @@ end
 
 % display stimuli and correctly handle spacing:
 % g(window, mainStimuli.stim1(trial), mainStimuli.stim2(trial), centerX, centerY, lineHeight);
-function displayStimuli(win, stim1, stim2, centerX, centerY, line,r) 
+function displayStimuli(win, stim1, stim2, centerX, centerY, line, r) 
     
     stim1 = char(stim1);
     stim2 = char(stim2);

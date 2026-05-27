@@ -1,0 +1,5 @@
+Si le nuage du haut a le plus de points,
+appuyez sur le bouton le plus proche de votre tête.
+
+Si le nuage du bas a le plus de points,
+appuyez sur le bouton le plus éloigné de votre tête.

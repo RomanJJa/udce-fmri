@@ -1,0 +1,9 @@
+Sie sehen gleich untereinander zwei Ziffern.
+Welche Ziffer ist die größere?
+
+Wenn die obere größer ist,
+drücken Sie die Taste näher am Kinn.
+
+Wenn die untere größer ist,
+drücken Sie vom Kinn 
+weiter entfernte die Taste.

@@ -1,0 +1,8 @@
+Es sehen gleich zwei Silben.
+Bilden diese beiden Silben ein existierendes Wort?
+
+Wenn ja, drücken Sie die Taste, die Ihrem Kinn am nächsten ist.
+
+Wenn nein, drücken Sie die Taste, die von Ihrem Kinn weiter weg ist.
+
+Bitte sprechen Sie nicht die einzelnen Wortteile während der Aufgabe aus.

@@ -1,0 +1,11 @@
+Es werden gleich zwei Wörter angezeigt.
+Reimen sich die Wörter?
+
+Wenn sie sich reimen, drücken Sie den Knopf, 
+der Ihrem Kinn am nächsten ist.
+
+Wenn sie sich nicht reimen, drücken Sie den Knopf,
+der weiter weg vom Kinn ist.
+
+Bitte sprechen Sie die Wörter nicht aus,
+während Sie die Aufgabe bearbeiten.

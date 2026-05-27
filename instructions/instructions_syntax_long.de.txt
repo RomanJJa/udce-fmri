@@ -1,0 +1,11 @@
+Es werden zwei Wörter angezeigt.
+Würden Sie diese Wörter aussprechen oder schreiben?
+
+Wenn ja, drücken Sie den Knopf,
+der Ihrem Kopf am nächsten ist.
+
+Wenn nicht, drücken Sie den Knopf,
+der weiter vom Kinn entfernt ist.
+
+Bitte sprechen Sie die Wörter nicht aus,
+während Sie die Aufgabe bearbeiten.

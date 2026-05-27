@@ -1,0 +1,11 @@
+Es werden zwei Silben angezeigt.
+Bilden diese beiden Silben ein existierendes Wort?
+
+Wenn die Silben ein Wort bilden,
+drücken Sie die Taste, die Ihrem Kinn am nächsten ist.
+
+Wenn sie kein existierendes Wort bilden,
+drücken Sie die Taste, die weiter von Ihrem Kinn entfernt ist.
+
+Bitte achten Sie darauf, die Wortteile während der 
+Aufgabe nicht auszusprechen.

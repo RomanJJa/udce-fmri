@@ -1,0 +1,7 @@
+Wenn die Silben ein Wort ergeben,
+drücken Sie die obere Taste.
+
+Wenn die Silben kein echtes Wort ergeben,
+drücken Sie die untere Taste.
+
+Bitte sprechen Sie die Wörter nicht aus.

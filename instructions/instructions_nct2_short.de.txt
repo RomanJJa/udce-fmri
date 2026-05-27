@@ -1,0 +1,7 @@
+Wenn die obere Zahl größer ist, 
+drücken Sie die Taste, 
+die näher an Ihrem Kopf ist.
+
+Wenn die untere Zahl größer ist, 
+drücken Sie die Taste, die weiter 
+von Ihrem Kinn entfernt ist.
