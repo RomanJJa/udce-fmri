@@ -12,8 +12,8 @@ stimulusDuration = 3.0; % 2s?
 feedbackDuration = 0.8; % 800ms for practice feedback
 pauseSeconds = 10.0; % 10s break every 50 trials
 nBlock = 32; % Number of trials per rgrgrrrgblock
-validKeys = {'m', 'z', 'ESCAPE'}; % Adjust as needed: 'r' is the upper stimulus; magenta instead of red and yellow instead of green
-scannerKeys = {'t', 'ESCAPE'}; % When waiting for scanner: what to look for
+responseKeys = {'m', 'z'}; % Adjust as needed: 'r' is the upper stimulus; magenta instead of red and yellow instead of green
+pulseKey = 't'; % key for scanner to send pulse
 delay = 0.004;
 recordFieldmap = false; % Should we record a field map?
 fontSize = 55; % Stimulus font size; instructions are 70% of that
@@ -23,6 +23,7 @@ practiceLoopPercent = 0.66; % minimum percent correct for practice loop
 [subject, noteInput, task, skipPractice] = experiment_pre_popup(allTaskNames);
 
 [taskName, runNumber, areMultipleRuns] = extract_task_info(task);
+validKeys = [responseKeys, 'ESCAPE']; 
 
 %% Adapt task-specific settings if necessary
 % Change in case we deal with the two-digit NCT
@@ -268,11 +269,11 @@ Screen('TextStyle', window, 1);
 %% Response hand test
 % if the subject has
 if mod(subjectNum, 2)== 0
-    resp1 = struct("hand", "left",  "key", validKeys(1), "stim", ' ← '); % ' ← '
-    resp2 = struct("hand", "right", "key", validKeys(2), "stim", ' → '); % ' → '
+    resp1 = struct("hand", "left",  "key", responseKeys(1), "stim", ' ← '); % ' ← '
+    resp2 = struct("hand", "right", "key", responseKeys(2), "stim", ' → '); % ' → '
 else % subject number uneven
-    resp1 = struct("hand", "left",  "key", validKeys(2), "stim", ' ← '); % ' ← '
-    resp2 = struct("hand", "right", "key", validKeys(1), "stim", ' → '); % ' → '
+    resp1 = struct("hand", "left",  "key", responseKeys(2), "stim", ' ← '); % ' ← '
+    resp2 = struct("hand", "right", "key", responseKeys(1), "stim", ' → '); % ' → '
 end
 
 % log which response key
@@ -327,7 +328,7 @@ try
     Screen('TextSize', window, fontSize);
     [onset, ~] = Screen('Flip', window);
     appendLog(logID, onset, "practice", "long-instructions", longInstructions);
-    awaitKey(Inf, validKeys);
+    awaitKey(Inf, responseKeys, onset, pulseKey, logID);
     
     %% If we are in a subsequent block: ...
     if runNumber < 2 && ~skipPractice
@@ -340,7 +341,7 @@ try
         DrawFormattedText(window, practiceStarting, 'center', 'center', 255,[],[],[],[],[],r);
         [onset, ~] = Screen('Flip', window);
         appendLog(logID, onset, "practice", "practice-start", string(practiceStarting));
-        awaitKey(2 - delay, {'ESCAPE'}, onset);
+        awaitKey(2 - delay, {'ESCAPE'}, onset, pulseKey, logID);
         
         %% Practice loop
         % introduce practice loop: As long as correct answers are less than 70%
@@ -355,7 +356,7 @@ try
                 Screen('FillPoly', window, 255, star_coordinates);
                 [onset, ~] = Screen('Flip', window);
                 appendLog(logID, onset, "practice", "fixation", "star");
-                awaitKey(fixationDuration - delay, {'ESCAPE'}, onset);
+                awaitKey(fixationDuration - delay, {'ESCAPE'}, onset, pulseKey, logID);
                 
                 % Draw stimulus:
                 appendLog(logID, GetSecs + delay, "loading", "rendering-stimulus", ...
@@ -375,16 +376,16 @@ try
                                   string(practiceStimuli.condition(trial))));
                 
                 % Wait for response: 
-                [rk, rt] = awaitKey(stimulusDuration - delay, validKeys, onset);
+                [rk, rt] = awaitKey(stimulusDuration - delay, responseKeys, onset, pulseKey, logID);
     
                 % Was there any response?
                 if isempty(rk)
                     rk = 'none';
                 end
     
-                correct = (string(rk) == string(validKeys(1)) & ...
+                correct = (string(rk) == string(responseKeys(1)) & ...
                            practiceStimuli.stim1_correct(trial)==1) || ...
-                          (string(rk) == string(validKeys(2)) & ...
+                          (string(rk) == string(responseKeys(2)) & ...
                            practiceStimuli.stim1_correct(trial)==0) || ...
                           (string(rk) == "none" && strcmp(practiceStimuli.condition(trial), 'null_event'));
                 appendLog(logID, onset + rt, "practice", "button-response", ...
@@ -393,7 +394,7 @@ try
                 
                 % wait for the rest of stimulus time after response:
                 if ~isnan(rt) || rt < stimulusDuration
-                    awaitKey(stimulusDuration - delay, validKeys, onset);
+                    awaitKey(stimulusDuration - delay, responseKeys, onset, pulseKey, logID);
                     WaitSecs(stimulusDuration - rt);
                 end
     
@@ -423,14 +424,14 @@ try
                 [~, onset] = Screen('Flip', window);
                 appendLog(logID, onset, "practice", "feedback", feedback);
                 if strcmp(rk, 'none')
-                    awaitKey(feedbackDuration - delay + 0.7, {'ESCAPE'}, onset);
+                    awaitKey(feedbackDuration - delay + 0.7, {}, onset, pulseKey, logID);
                 else 
-                    awaitKey(feedbackDuration - delay, {'ESCAPE'}, onset);
+                    awaitKey(feedbackDuration - delay, {}, onset, pulseKey, logID);
                 end
                 % Blank:
                 [~, onset] = Screen('Flip', window);
                 appendLog(logID, onset, "practice", "blank", "");
-                awaitKey(practiceStimuli.isi(trial)/1000 - delay, {'ESCAPE'}, onset);
+                awaitKey(practiceStimuli.isi(trial)/1000 - delay, {}, onset, pulseKey, logID);
                 
                 % Store results:
                 row = practiceIterator * size(practiceStimuli, 1) + trial;
@@ -453,14 +454,14 @@ try
                 DrawFormattedText(window, shortInstructions, 'center', 'center', 255,[],[],[],[],[],r);
                 [onset, ~] = Screen('Flip', window);
                 appendLog(logID, onset, "practice", "short-instructions", shortInstructions);
-                awaitKey(Inf, validKeys, onset);
+                awaitKey(Inf, responseKeys, onset, pulseKey, logID);
                 
                 % Continue practicing:
                 DrawFormattedText(window, continuePracticing, 'center', 'center', 255,[],[],[],[],[],r);
                 Screen('TextSize', window, fontSize);
                 [onset, ~] = Screen('Flip', window);
                 appendLog(logID, onset, "practice", "continue-practice", continuePracticing);
-                awaitKey(3 - delay, {'ESCAPE'}, onset);
+                awaitKey(3 - delay, {}, onset, pulseKey, logID);
             end
         end
     
@@ -475,7 +476,7 @@ try
         DrawFormattedText(window, practiceFinished, 'center', 'center', 255,[],[],[],[],[],r);
         [onset, ~] = Screen('Flip', window);
         appendLog(logID, onset, "practice", "practice-finished", practiceFinished);
-        awaitKey(Inf, validKeys);
+        awaitKey(Inf, responseKeys, onset, pulseKey, logID);
         
     end 
 
@@ -484,8 +485,8 @@ try
     if recordFieldmap
         DrawFormattedText(window, scanningFieldmaps, 'center', 'center', 255,[],[],[],[],[],r);
         [onset, ~] = Screen('Flip', window);
-        appendLog(logID, onset, "practice", "fieldmap-recording", scanningFieldmaps);
-        awaitKey(Inf, {'f', 'ESCAPE'});
+        appendLog(logID, onset, "fieldmap", "fieldmap-recording", scanningFieldmaps);
+        awaitKey(Inf, {'f', 'ESCAPE'}, onset, pulseKey, logID);
     end
 
 
@@ -495,36 +496,39 @@ try
     DrawFormattedText(window, waitingForScanner, 'center', 'center', 255,[],[],[],[],[],r);
     [onset, ~] = Screen('Flip', window);
     appendLog(logID, onset, "practice", "waiting-for-scanner", waitingForScanner);
-    RestrictKeysForKbCheck(KbName(scannerKeys));
+    %RestrictKeysForKbCheck(KbName({pulseKey, 'ESCAPE'}));
     
     % Waiting for scanner response:
     % d_ttl = 0; sequenceStart = GetSecs; k_ttl = zeros(1,256);
-    [d_ttl, sequenceStart, k_ttl] = KbCheck;
+    %[d_ttl, sequenceStart, k_ttl] = KbCheck;
     fprintf('Start session on the sync box\nThen start scan\n');
     fprintf('The experiment will start automatically\n\n...\n\n');
     
-    % waiting for TTL
-    while ~d_ttl && ~k_ttl(KbName('ESCAPE'))
-        [d_ttl,sequenceStart,k_ttl] = KbCheck;
-    end
-    checkEscQuit(k_ttl);
+    %% waiting for TTL
+    %while ~d_ttl && ~k_ttl(KbName('ESCAPE'))
+    %    [d_ttl,sequenceStart,k_ttl] = KbCheck;
+    %end
+    %
+    %checkEscQuit(k_ttl);
+    [k_ttl, d_ttl] = awaitKey(Inf, {pulseKey}, onset, '', logID);
+    sequenceStart = onset+d_ttl;
     appendLog(logID, sequenceStart, "test", "sequence-start", ...
-              "Scanner starts right now. For fMRI analyses, "+ ...
-              "subtract the current time from all logged times "+ ...
-              "(first column in this file).");
+              sprintf("Pulse signal: '%s'. Scanner starts right now. For fMRI analyses, "+ ...
+                      "subtract the current time from all logged times "+ ...
+                      "(first column in this file).", k_ttl));
     
     %% Transition to main experiment
     RestrictKeysForKbCheck(KbName(validKeys)); % Reset to experiment keys
     DrawFormattedText(window, taskStarts, 'center', 'center', 255,[],[],[],[],[],r);
     [onset, ~] = Screen('Flip', window);
     appendLog(logID, onset, "test", "test-starting", taskStarts);
-    awaitKey(4 - delay, {'ESCAPE'}, onset);
+    awaitKey(4 - delay, {}, onset, pulseKey, logID);
     
     %% short 
     RestrictKeysForKbCheck(KbName(validKeys)); % Reset to experiment keys
     [onset, ~] = Screen('Flip', window);
     appendLog(logID, onset, "test", "blank", "blank screen before start for 3000ms");
-    awaitKey(4 - delay, {'ESCAPE'}, onset);
+    awaitKey(4 - delay, {}, onset, pulseKey, logID);
 
 %% ~~~ Main Task ~~~
     
@@ -536,18 +540,18 @@ try
             DrawFormattedText(window, shortPause, 'center', 'center', 255,[],[],[],[],[],r);
             [onset, ~] = Screen('Flip', window);
             appendLog(logID, onset, "test", "short-pause", shortPause);
-            awaitKey(pauseSeconds, {'ESCAPE'}, onset);
+            awaitKey(pauseSeconds, {}, onset, pulseKey, logID);
             
             % pause is over
             DrawFormattedText(window, taskContinues, 'center', 'center', 255,[],[],[],[],[],r);
             [onset, ~] = Screen('Flip', window);
             appendLog(logID, onset, "test", "pause-over", taskContinues);
-            awaitKey(2, {'ESCAPE'}, onset);
+            awaitKey(2, {}, onset, pulseKey, logID);
 
             % short gap after pause is over
             [onset, ~] = Screen('Flip', window);
             appendLog(logID, onset, "test", "blank", "after-pause blank screen for 1500ms");
-            awaitKey(1.5, {'ESCAPE'}, onset);
+            awaitKey(1.5, {}, onset, pulseKey, logID);
             
         end
 
@@ -555,7 +559,7 @@ try
         Screen('FillPoly', window, 255, star_coordinates);
         [onset, ~] = Screen('Flip', window);
         appendLog(logID, onset, "test", "fixation", "");
-        awaitKey(fixationDuration, {'ESCAPE'}, onset);
+        awaitKey(fixationDuration, {}, onset, pulseKey, logID);
         
         % Draw stimuli
         appendLog(logID, GetSecs, "loading", "rendering-stimulus", ...
@@ -569,7 +573,7 @@ try
                         centerX, centerY, lineHeight,r);
         % DrawFormattedText(window, char(mainStimuli.stim1(trial)), 'center', centerY - lineHeight, 255);
         % DrawFormattedText(window, char(mainStimuli.stim2(trial)), 'center', centerY + lineHeight, 255);
-        [onset, ~] = Screen('Flip', window);
+        [onset, ~] = Screen('Flip', window); % Begin presenting the stimuli
         appendLog(logID, onset, "test", "stimulus", ...
                   sprintf("trial %d: ""%s"" vs. ""%s"" of cond=%s", trial, ...
                           strrep(string(mainStimuli.stim1(trial)), ' ', '_'), ...
@@ -579,7 +583,7 @@ try
         
         % Collect response
         % [responseKey, responseTime] = awaitKey(wait, awaitKeys)
-        [rk, rt] = awaitKey(stimulusDuration, validKeys, onset);
+        [rk, rt] = awaitKey(stimulusDuration, validKeys, onset, pulseKey, logID);
         
         % Which key was pressed?
         if isempty(rk)
@@ -588,12 +592,12 @@ try
         fprintf("Key:   ""%s""\n", rk);
         
         % Was the response correct?
-        correct = (string(rk) == string(validKeys(1)) && mainStimuli.stim1_correct(trial)==1) || ...
-                  (string(rk) == string(validKeys(2)) && mainStimuli.stim1_correct(trial)==0) || ...
+        correct = (string(rk) == string(responseKeys(1)) && mainStimuli.stim1_correct(trial)==1) || ...
+                  (string(rk) == string(responseKeys(2)) && mainStimuli.stim1_correct(trial)==0) || ...
                   (string(rk) == "none" && mainStimuli.condition(trial)=="null_event");
         
         if ~isnan(rt)
-            awaitKey(stimulusDuration - rt, {'ESCAPE'});
+            awaitKey(stimulusDuration, {}, onset, pulseKey, logID); % stimulusDuration - rt ???
         end
         
         % log response button
@@ -611,11 +615,11 @@ try
         [onset, ~] = Screen('Flip', window);
         appendLog(logID, onset, "test", "blank", ...
                   sprintf("ISI=%dms", mainStimuli.isi(trial)));
-        awaitKey(mainStimuli.isi(trial)/1000 - delay, {'ESCAPE'}, onset);
+        awaitKey(mainStimuli.isi(trial)/1000 - delay, {}, onset, pulseKey, logID);
         
     end
     
-    %% Store CSV for practice trials:
+    %% Store CSV for test trials:
     appendLog(logID, GetSecs, "loading", "test-csv-storing", ...
               sprintf("attempting to store test file CSV '%s'", strrep(outTestFile,'\','/')));
     writetable(mainStimuli, outTestFile);
@@ -626,11 +630,11 @@ try
     DrawFormattedText(window, taskComplete, 'center', 'center', 255,[],[],[],[],[],r);
     [onset, ~] = Screen('Flip', window);
     appendLog(logID, onset, "test", "task-end", taskComplete);
-    awaitKey(5 - delay, {'ESCAPE'}, onset);
+    awaitKey(5 - delay, {}, onset, pulseKey, logID);
     
     fprintf('\nThe task is over.\n');
     
-    % Cleanup
+    %% Clean up Psychtoolbox
     fclose(logID); % close the log file
     ListenChar(0);
     sca; % Close Psychtoolbox screen
@@ -711,26 +715,49 @@ function quitTask(fid)
     sca;
 end
 
-function [responseKey, responseTime] = awaitKey(wait, awaitKeys, onset)
-    if nargin < 3
+function [responseKey, responseTime] = awaitKey(wait, awaitKeys, onset, pulseKey, logid)
+    if nargin < 3 
         onset = GetSecs;
-        keyTime = onset + wait;
-    else 
-        keyTime = onset + wait;
+    end
+    if nargin < 4
+        pulseKey = 'none';
+    end
+    if nargin < 5
+        logid = NaN;
+    end
+
+    keyTime = onset + wait;
+    waitingForPulse = false;
+    if ismember(pulseKey, awaitKeys) 
+        waitingForPulse = true;
     end
     responseKey = 'none';
     responseTime = wait;
-    oldKeys = RestrictKeysForKbCheck(KbName(awaitKeys));
-    keyIsDown = false;
-    keyCode = size(zeros(1, 256));
+    oldKeys = RestrictKeysForKbCheck(KbName([awaitKeys pulseKey 'ESCAPE']));
+    timeUp = onset + wait;
+
+    minNextLog = onset;
+    %keyIsDown = false;
+    %keyCode = size(zeros(1, 256));
     try 
-        while GetSecs - onset < wait
+        while GetSecs < timeUp
             [keyIsDown, keyTime, keyCode] = KbCheck;
             if keyIsDown
                 responseKey = KbName(keyCode);
                 responseTime = keyTime - onset;
-                checkEscQuit(keyCode);
-                break;
+                isPulseKey = strcmp(responseKey, pulseKey);
+                if isPulseKey && keyTime > minNextLog && ~waitingForPulse % Check for pulse
+                    minNextLog = keyTime+0.3;
+                    responseKey = 'none';
+                    % Now log the event:
+                    if ~isnan(logid)
+                        appendLog(logid, keyTime, "test", "scanner-pulse", "");
+                    end
+                    fprintf("%d: Detected scanner pulse after %d of onset.\n", keyTime, responseTime);
+                elseif ~isPulseKey   % now if it is not the pulse key
+                    checkEscQuit(keyCode);
+                    break;
+                end
             end
         end
         RestrictKeysForKbCheck(oldKeys);
