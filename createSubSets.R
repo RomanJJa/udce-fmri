@@ -1,13 +1,13 @@
 
 
-path = "C:/Users/Roman/Documents/MATLAB/projects/udce-fmri/tasks"
+path = "C:/Users/Roman/Documents/MATLAB/projects/udce-fmri/tasks-tuebingen"
 bidsPath <- file.path(path, "data")
 setwd(paste0(path,"/originalStimuli"))
 
 
-subjectNum <- c(11:48)
+subjectNum <- c(1:5)
 tasks <- c("nct1","nct2","phono","lexi","morpho","syntax")
-lang  <- "fr" 
+langs  <- c("de", "fr")
 minISI <- 1000
 maxISI <- 3000
 # trialsPerBlock <- 32 # after every "trialsPerBlock" trials, there is a pause
@@ -255,139 +255,140 @@ shiftStimuli <- function(data, shift=" ") {
 ### Load stimulus sets and 
 library(readr)
 options("encoding" = "UTF-8")
-rawstim <- list()
-for (task in tasks) {
-	#rawstim[[task]][["test"]] <- read.csv(sprintf("%s_test_%s.csv", task, lang),
-	#                                      encoding="UTF-8", fileEncoding = "UTF-8")
-	#rawstim[[task]][["practice"]] <- read.csv(sprintf("%s_practice_%s.csv", task, lang),
-	#                                          encoding="UTF-8", fileEncoding = "UTF-8")
-	rawstim[[task]][["test"]] <- as.data.frame(read_csv(sprintf("%s_test_%s.csv", task, lang),
-	                                      locale = locale(encoding = "UTF-8")))
-	rawstim[[task]][["practice"]] <- as.data.frame(read_csv(sprintf("%s_practice_%s.csv", task, lang),
-	                                          locale = locale(encoding = "UTF-8")))
-	
-	## Add missing necessary columns to stimulus sets	
-	## Required columns
-	# stim1
-	# stim2
-	# stim1_correct
-	# condition
-	# is_null: is null event
-	# expected_button?
-	# isi --> we do that later for each participant
-	if (task == "nct2") {
-		
-		rawstim$nct2$practice$stim1         <- as.character(rawstim$nct2$practice$num1)
-		rawstim$nct2$practice$stim2         <- as.character(rawstim$nct2$practice$num2)
-		rawstim$nct2$practice$stim1_correct <- rawstim$nct2$practice$num1_greater
-		rawstim$nct2$practice$is_null       <- 0
-		rawstim$nct2$practice$isi           <- 500
-		
-		rawstim$nct2$test$stim1         <- as.character(rawstim$nct2$test$num1)
-		rawstim$nct2$test$stim2         <- as.character(rawstim$nct2$test$num2)
-		rawstim$nct2$test$stim1_correct <- rawstim$nct2$test$num1_greater
-		rawstim$nct2$test$is_null       <- 0
-		rawstim$nct2$test$isi           <- 500
-		
-	} else if (task == "nct1") {
-		
-		rawstim$nct1$practice$stim1         <- as.character(rawstim$nct1$practice$number1)
-		rawstim$nct1$practice$stim2         <- as.character(rawstim$nct1$practice$number2)
-		#rawstim$nct1$practice$condition    <- paste0("dist_",rawstim$nct1$practice$distance)
-		rawstim$nct1$practice$condition     <- paste0("dist-", ((rawstim$nct1$practice$distance+1) %/% 2)*2-1, 
-		                                              "-", ((rawstim$nct1$practice$distance+1) %/% 2)*2)
-		rawstim$nct1$practice$stim1_correct <- rawstim$nct1$practice$num1_greater
-		rawstim$nct1$practice$is_null       <- 0
-		rawstim$nct1$practice$isi               <- 500
-		
-		rawstim$nct1$test$stim1         <- as.character(rawstim$nct1$test$number1)
-		rawstim$nct1$test$stim2         <- as.character(rawstim$nct1$test$number2)
-		rawstim$nct1$test$condition     <- paste0("dist-", ((rawstim$nct1$test$distance+1) %/% 2)*2-1, 
-		                                          "-", ((rawstim$nct1$test$distance+1) %/% 2)*2)
-		rawstim$nct1$test$stim1_correct <- rawstim$nct1$test$num1_greater
-		rawstim$nct1$test$is_null       <- 0
-		rawstim$nct1$test$isi           <- 500
-		
-	} else if (task == "phono") {
-		
-		rawstim$phono$practice$stim1         <- as.character(rawstim$phono$practice$word_1)
-		rawstim$phono$practice$stim2         <- as.character(rawstim$phono$practice$word_2)
-		rawstim$phono$practice$condition     <- gsub("_","-",rawstim$phono$practice$orthography_phonology)
-		rawstim$phono$practice$stim1_correct <- rawstim$phono$practice$does_rhyme
-		rawstim$phono$practice$is_null       <- 0
-		rawstim$phono$practice$isi           <- 500
+stimlist <- rawstim <- list()
 
-		rawstim$phono$test$stim1         <- as.character(rawstim$phono$test$word_1)
-		rawstim$phono$test$stim2         <- as.character(rawstim$phono$test$word_2)
-		rawstim$phono$test$condition     <- gsub("_","-",rawstim$phono$test$orthography_phonology)
-		rawstim$phono$test$stim1_correct <- rawstim$phono$test$does_rhyme
-		rawstim$phono$test$is_null       <- 0
-		rawstim$phono$test$isi           <- 500
+for (lang in langs) {
+	for (task in tasks) {
+		rawstim[[task]][["test"]] <- as.data.frame(read_csv(sprintf("%s_test_%s.csv", task, lang),
+											                locale = locale(encoding = "UTF-8")))
+		rawstim[[task]][["practice"]] <- as.data.frame(read_csv(sprintf("%s_practice_%s.csv", task, lang),
+												                locale = locale(encoding = "UTF-8")))
+		
+		## Add missing necessary columns to stimulus sets	
+		## Required columns
+		# stim1
+		# stim2
+		# stim1_correct
+		# condition
+		# is_null: is null event
+		# expected_button?
+		# isi --> we do that later for each participant
+		if (task == "nct2") {
+			
+			rawstim$nct2$practice$stim1         <- as.character(rawstim$nct2$practice$num1)
+			rawstim$nct2$practice$stim2         <- as.character(rawstim$nct2$practice$num2)
+			rawstim$nct2$practice$stim1_correct <- rawstim$nct2$practice$num1_greater
+			rawstim$nct2$practice$is_null       <- 0
+			rawstim$nct2$practice$isi           <- 500
+			
+			rawstim$nct2$test$stim1         <- as.character(rawstim$nct2$test$num1)
+			rawstim$nct2$test$stim2         <- as.character(rawstim$nct2$test$num2)
+			rawstim$nct2$test$stim1_correct <- rawstim$nct2$test$num1_greater
+			rawstim$nct2$test$is_null       <- 0
+			rawstim$nct2$test$isi           <- 500
+			
+		} else if (task == "nct1") {
+			
+			rawstim$nct1$practice$stim1         <- as.character(rawstim$nct1$practice$number1)
+			rawstim$nct1$practice$stim2         <- as.character(rawstim$nct1$practice$number2)
+			#rawstim$nct1$practice$condition    <- paste0("dist_",rawstim$nct1$practice$distance)
+			rawstim$nct1$practice$condition     <- paste0("dist-", ((rawstim$nct1$practice$distance+1) %/% 2)*2-1, 
+														  "-", ((rawstim$nct1$practice$distance+1) %/% 2)*2)
+			rawstim$nct1$practice$stim1_correct <- rawstim$nct1$practice$num1_greater
+			rawstim$nct1$practice$is_null       <- 0
+			rawstim$nct1$practice$isi               <- 500
+			
+			rawstim$nct1$test$stim1         <- as.character(rawstim$nct1$test$number1)
+			rawstim$nct1$test$stim2         <- as.character(rawstim$nct1$test$number2)
+			rawstim$nct1$test$condition     <- paste0("dist-", ((rawstim$nct1$test$distance+1) %/% 2)*2-1, 
+													  "-", ((rawstim$nct1$test$distance+1) %/% 2)*2)
+			rawstim$nct1$test$stim1_correct <- rawstim$nct1$test$num1_greater
+			rawstim$nct1$test$is_null       <- 0
+			rawstim$nct1$test$isi           <- 500
+			
+		} else if (task == "phono") {
+			
+			rawstim$phono$practice$stim1         <- as.character(rawstim$phono$practice$word_1)
+			rawstim$phono$practice$stim2         <- as.character(rawstim$phono$practice$word_2)
+			rawstim$phono$practice$condition     <- gsub("_","-",rawstim$phono$practice$orthography_phonology)
+			rawstim$phono$practice$stim1_correct <- rawstim$phono$practice$does_rhyme
+			rawstim$phono$practice$is_null       <- 0
+			rawstim$phono$practice$isi           <- 500
 
-	} else if (task == "lexi") {
-		
-		rawstim$lexi$practice$stim1         <- as.character(rawstim$lexi$practice$word_pt_1)
-		rawstim$lexi$practice$stim2         <- as.character(rawstim$lexi$practice$word_pt_2)
-		rawstim$lexi$practice$condition     <- "word-true"
-		rawstim$lexi$practice$condition[rawstim$lexi$practice$Error_position_syllable==1] <- "prefix-false"
-		rawstim$lexi$practice$condition[rawstim$lexi$practice$Error_position_syllable==2] <- "suffix-false"
-		rawstim$lexi$practice$stim1_correct <- rawstim$lexi$practice$correct
-		rawstim$lexi$practice$is_null       <- 0
-		rawstim$lexi$practice$isi           <- 500
-		
-		rawstim$lexi$test$stim1         <- as.character(rawstim$lexi$test$word_pt_1)
-		rawstim$lexi$test$stim2         <- as.character(rawstim$lexi$test$word_pt_2)
-		#rawstim$lexi$test$condition     <- rawstim$lexi$test$Error_position_syllable
-		rawstim$lexi$test$condition     <- "real-word"
-		rawstim$lexi$test$condition[rawstim$lexi$test$Error_position_syllable==1] <- "prefix-false"
-		rawstim$lexi$test$condition[rawstim$lexi$test$Error_position_syllable==2] <- "suffix-false"
-		
-		rawstim$lexi$test$stim1_correct <- rawstim$lexi$test$correct
-		rawstim$lexi$test$is_null       <- 0
-		rawstim$lexi$test$isi           <- 500
-		
-	} else if (task == "morpho") {
-		
-		rawstim$morpho$practice$stim1         <- as.character(rawstim$morpho$practice$word_pt_1)
-		rawstim$morpho$practice$stim2         <- as.character(rawstim$morpho$practice$word_pt_2)
-		rawstim$morpho$practice$condition     <- ifelse(rawstim$morpho$practice$prefix==1, "prefix", "suffix")
-		rawstim$morpho$practice$stim1_correct <- rawstim$morpho$practice$correct
-		rawstim$morpho$practice$is_null       <- 0
-		rawstim$morpho$practice$isi           <- 500
-		
-		rawstim$morpho$test$stim1         <- as.character(rawstim$morpho$test$word_pt_1)
-		rawstim$morpho$test$stim2         <- as.character(rawstim$morpho$test$word_pt_2)
-		rawstim$morpho$test$condition     <- ifelse(rawstim$morpho$test$prefix==1, "prefix", "suffix")
-		rawstim$morpho$test$stim1_correct <- rawstim$morpho$test$correct
-		rawstim$morpho$test$is_null       <- 0
-		rawstim$morpho$test$isi           <- 500
-		
-	} else if (task == "syntax") {
-		
-		rawstim$syntax$practice$stim1         <- as.character(rawstim$syntax$practice$word_1)
-		rawstim$syntax$practice$stim2         <- as.character(rawstim$syntax$practice$word_2)
-		rawstim$syntax$practice$condition     <- paste0(ifelse(rawstim$syntax$practice$inflection_type_word_2==1,"verb","noun"), "-", 
-		                                                ifelse(rawstim$syntax$practice$correct==1,"true","false"))
-		rawstim$syntax$practice$stim1_correct <- rawstim$syntax$practice$correct
-		rawstim$syntax$practice$is_null       <- 0
-		rawstim$syntax$practice$isi           <- 500
-		
-		rawstim$syntax$test$stim1         <- as.character(rawstim$syntax$test$word_1)
-		rawstim$syntax$test$stim2         <- as.character(rawstim$syntax$test$word_2)
-		#rawstim$syntax$test$condition    <- rawstim$syntax$test$word_1
-		rawstim$syntax$test$condition     <- paste0(ifelse(rawstim$syntax$test$inflection_type_word_2==1,"verb","noun"), "-", 
-		                                            ifelse(rawstim$syntax$test$correct==1,"true","false"))
-		rawstim$syntax$test$stim1_correct <- rawstim$syntax$test$correct
-		rawstim$syntax$test$is_null       <- 0
-		rawstim$syntax$test$isi           <- 500
-		
-	} else {
-		cat("Task ", task, "is not found in the \"tasks\" array.\n")
+			rawstim$phono$test$stim1         <- as.character(rawstim$phono$test$word_1)
+			rawstim$phono$test$stim2         <- as.character(rawstim$phono$test$word_2)
+			rawstim$phono$test$condition     <- gsub("_","-",rawstim$phono$test$orthography_phonology)
+			rawstim$phono$test$stim1_correct <- rawstim$phono$test$does_rhyme
+			rawstim$phono$test$is_null       <- 0
+			rawstim$phono$test$isi           <- 500
+
+		} else if (task == "lexi") {
+			
+			rawstim$lexi$practice$stim1         <- as.character(rawstim$lexi$practice$word_pt_1)
+			rawstim$lexi$practice$stim2         <- as.character(rawstim$lexi$practice$word_pt_2)
+			rawstim$lexi$practice$condition     <- "word-true"
+			rawstim$lexi$practice$condition[rawstim$lexi$practice$Error_position_syllable==1] <- "prefix-false"
+			rawstim$lexi$practice$condition[rawstim$lexi$practice$Error_position_syllable==2] <- "suffix-false"
+			rawstim$lexi$practice$stim1_correct <- rawstim$lexi$practice$correct
+			rawstim$lexi$practice$is_null       <- 0
+			rawstim$lexi$practice$isi           <- 500
+			
+			rawstim$lexi$test$stim1         <- as.character(rawstim$lexi$test$word_pt_1)
+			rawstim$lexi$test$stim2         <- as.character(rawstim$lexi$test$word_pt_2)
+			#rawstim$lexi$test$condition     <- rawstim$lexi$test$Error_position_syllable
+			rawstim$lexi$test$condition     <- "real-word"
+			rawstim$lexi$test$condition[rawstim$lexi$test$Error_position_syllable==1] <- "prefix-false"
+			rawstim$lexi$test$condition[rawstim$lexi$test$Error_position_syllable==2] <- "suffix-false"
+			
+			rawstim$lexi$test$stim1_correct <- rawstim$lexi$test$correct
+			rawstim$lexi$test$is_null       <- 0
+			rawstim$lexi$test$isi           <- 500
+			
+		} else if (task == "morpho") {
+			
+			rawstim$morpho$practice$stim1         <- as.character(rawstim$morpho$practice$word_pt_1)
+			rawstim$morpho$practice$stim2         <- as.character(rawstim$morpho$practice$word_pt_2)
+			rawstim$morpho$practice$condition     <- ifelse(rawstim$morpho$practice$prefix==1, "prefix", "suffix")
+			rawstim$morpho$practice$stim1_correct <- rawstim$morpho$practice$correct
+			rawstim$morpho$practice$is_null       <- 0
+			rawstim$morpho$practice$isi           <- 500
+			
+			rawstim$morpho$test$stim1         <- as.character(rawstim$morpho$test$word_pt_1)
+			rawstim$morpho$test$stim2         <- as.character(rawstim$morpho$test$word_pt_2)
+			rawstim$morpho$test$condition     <- ifelse(rawstim$morpho$test$prefix==1, "prefix", "suffix")
+			rawstim$morpho$test$stim1_correct <- rawstim$morpho$test$correct
+			rawstim$morpho$test$is_null       <- 0
+			rawstim$morpho$test$isi           <- 500
+			
+		} else if (task == "syntax") {
+			
+			rawstim$syntax$practice$stim1         <- as.character(rawstim$syntax$practice$word_1)
+			rawstim$syntax$practice$stim2         <- as.character(rawstim$syntax$practice$word_2)
+			rawstim$syntax$practice$condition     <- paste0(ifelse(rawstim$syntax$practice$inflection_type_word_2==1,"verb","noun"), "-", 
+															ifelse(rawstim$syntax$practice$correct==1,"true","false"))
+			rawstim$syntax$practice$stim1_correct <- rawstim$syntax$practice$correct
+			rawstim$syntax$practice$is_null       <- 0
+			rawstim$syntax$practice$isi           <- 500
+			
+			rawstim$syntax$test$stim1         <- as.character(rawstim$syntax$test$word_1)
+			rawstim$syntax$test$stim2         <- as.character(rawstim$syntax$test$word_2)
+			#rawstim$syntax$test$condition    <- rawstim$syntax$test$word_1
+			rawstim$syntax$test$condition     <- paste0(ifelse(rawstim$syntax$test$inflection_type_word_2==1,"verb","noun"), "-", 
+														ifelse(rawstim$syntax$test$correct==1,"true","false"))
+			rawstim$syntax$test$stim1_correct <- rawstim$syntax$test$correct
+			rawstim$syntax$test$is_null       <- 0
+			rawstim$syntax$test$isi           <- 500
+			
+		} else {
+			cat("Task ", task, "is not found in the \"tasks\" array.\n")
+		}
 	}
+	stimlist[[lang]] <- rawstim
 }
-
 # rawstim$phono$practice
-
+names(stimlist)
+names(stimlist$de)
+names(stimlist$fr)
 ##
 	
 
@@ -397,14 +398,11 @@ for (task in tasks) {
 ### Generate individual BIDS directories and stimulus sets
 # createStimFiles <- function(bidsPath, subjectNum)
 createStimFiles <- function(bids, subjects, stimulusSets, minisi=500, maxisi=3000) {
-	# bids = bidsPath; subjects = subjectNum; stimulusSets = rawstim; minisi=500; maxisi=3000
+	# bids = bidsPath; subjects = subjectNum; stimulusSets = stimlist; minisi=500; maxisi=3000
 	if (class(subjects) != "numeric" & class(subjects) != "integer") {
 		stop("Argument \"subjects\" must be numeric or integer.")
 	}
-	
-	# stimulusSets[["lexi"]] <- NULL
-	
-	
+		
 	# Check if any data have already been recorded for that participant:
 	for (subj in subjects) {
 		subject <- sprintf("sub-%03d", subj)
@@ -420,6 +418,9 @@ createStimFiles <- function(bids, subjects, stimulusSets, minisi=500, maxisi=300
 	}
 	# bids = bidsPath; 
 	# bids: path to bids data
+	
+	# See if bids path exists:
+	suppressWarnings(dir.create(bids))
 	
 	for (subj in subjects) {
 		# subj = subjects[1]
@@ -439,77 +440,79 @@ createStimFiles <- function(bids, subjects, stimulusSets, minisi=500, maxisi=300
 		suppressWarnings(dir.create(file.path(subjectPath, "fmap"))) # path to field maps
 		suppressWarnings(dir.create(file.path(subjectPath, "func"))) # path to functional records
 		
-		for (phase in c("practice", "test")) {
-			for (task in names(stimulusSets)) {
-				# phase = "test"; task = "nct2"
-				cat(sprintf("task: %s-%s for %s:\n", task, phase, subject))
-				newstim <- stimulusSets[[task]][[phase]]
-				# newstim <- stimulusSets[["nct2"]][["practice"]]
-				if (phase == "test" & task == "nct2") {
-					firstRun <- TRUE
-					newstim2 <- newstim
-					
-					# pseudo-randomize stimulus set:
-					while (firstRun | max(as.numeric(names(table(rle(newstim2$stim1_correct)$lengths)))) > 3 ) {
+		for (lang in c("de","fr")) {
+			for (phase in c("practice", "test")) {
+				for (task in names(stimulusSets[[lang]])) {
+					# phase = "test"; task = "nct2"
+					cat(sprintf("task: %s-%s in language %s for subject %s:\n", task, phase, lang, subject))
+					newstim <- stimulusSets[[lang]][[task]][[phase]]
+					# newstim <- stimulusSets[["nct2"]][["practice"]]
+					if (phase == "test" & task == "nct2") {
+						firstRun <- TRUE
 						newstim2 <- newstim
-						firstRun <- FALSE
-						newstim2 <- pseudorandomize(newstim2[sample(1:nrow(newstim2), replace=FALSE), ], 
-												    by=c("condition","stim1_correct"), maxRepeat=3)
-					}
-					newstim <- newstim2
-					
-					# bounds to cut the :
-					bounds <- c(0, floor(nrow(newstim)/2), nrow(newstim))
-					
-					for (set in 1:2) {
-						# Extract block of tasks:
-						block <- newstim[(bounds[set]+1):bounds[set+1], ]
 						
+						# pseudo-randomize stimulus set:
+						while (firstRun | max(as.numeric(names(table(rle(newstim2$stim1_correct)$lengths)))) > 3 ) {
+							newstim2 <- newstim
+							firstRun <- FALSE
+							newstim2 <- pseudorandomize(newstim2[sample(1:nrow(newstim2), replace=FALSE), ], 
+														by=c("condition","stim1_correct"), maxRepeat=3)
+						}
+						newstim <- newstim2
+						
+						# bounds to cut the :
+						bounds <- c(0, floor(nrow(newstim)/2), nrow(newstim))
+						
+						for (set in 1:2) {
+							# Extract block of tasks:
+							block <- newstim[(bounds[set]+1):bounds[set+1], ]
+							
+							# Insert null events:
+							block <- insertNullEvents(data=block, content="##", every=5, jitter=1, pauseEvery=55)
+							# generate different ISIs:
+							block <- generateISIs(block, block$condition, min=minisi, max=maxisi)
+							# shift numbers to the left or right
+							block <- shiftStimuli(data=block, shift="  ")
+							
+							# paste0(subject, "_task-%s-%s%s_stimuli.csv")
+							#sprintf(stimFileName, sprintf("%s_", task, set), phase))
+							file <- file.path(stimPath, sprintf("%s_task-%s_run-%d_lang-%s_stimuli.csv", subject, task, set, lang))
+							
+							readr::write_excel_csv(block, file)
+						}
+					} else if (phase == "practice" & task == "nct2") {
 						# Insert null events:
-						block <- insertNullEvents(data=block, content="##", every=5, jitter=1, pauseEvery=55)
-						# generate different ISIs:
-						block <- generateISIs(block, block$condition, min=minisi, max=maxisi)
+						newstim <- insertNullEvents(data=newstim, content="##", every=3)
 						# shift numbers to the left or right
-						block <- shiftStimuli(data=block, shift="  ")
-						
-						# paste0(subject, "_task-%s-%s%s_stimuli.csv")
-						#sprintf(stimFileName, sprintf("%s_", task, set), phase))
-						file <- file.path(stimPath, sprintf("%s_task-%s_run-%d_stimuli.csv", subject, task, set))
-						
-						readr::write_excel_csv(block, file)
+						newstim <- shiftStimuli(data=newstim, shift="  ")
+					} else if (phase == "test") {
+						newstim <- pseudorandomize(newstim, by=c("condition", "stim1_correct"), maxRepeat=3)
+					} else { # if a practice set:
+						newstim <- newstim[sample(1:nrow(newstim), replace=FALSE), ]
 					}
-				} else if (phase == "practice" & task == "nct2") {
-					# Insert null events:
-					newstim <- insertNullEvents(data=newstim, content="##", every=3)
-					# shift numbers to the left or right
-					newstim <- shiftStimuli(data=newstim, shift="  ")
-				} else if (phase == "test") {
-					newstim <- pseudorandomize(newstim, by=c("condition", "stim1_correct"), maxRepeat=3)
-				} else { # if a practice set:
-					newstim <- newstim[sample(1:nrow(newstim), replace=FALSE), ]
+					
+					if (phase == "test") {
+						cat(sprintf("task: %s-%s, occurences of same response sides:\n", task, phase))
+						print(table(rle(newstim$stim1_correct)$lengths))
+					}
+					
+					# Now write the files:
+					if (!(phase == "test" & task == "nct2") & phase == "test") { # any localizer task
+						file <- file.path(stimPath, sprintf("%s_task-%s_lang-%s_stimuli.csv", subject, task, lang))
+						readr::write_excel_csv(newstim, file)
+					} else if (!(phase == "test" & task == "nct2") & phase == "practice") {
+						file <- file.path(stimPath, sprintf("%s_task-%s-practice_lang-%s_stimuli.csv", subject, task, lang))
+						readr::write_excel_csv(newstim, file)
+					}
+					# write.csv(newstim, file, row.names=FALSE, quote=TRUE)
+					cat("wrote file:", file, "\n")
+					cat("\n\n\n")
 				}
-				
-				if (phase == "test") {
-					cat(sprintf("task: %s-%s, occurences of same response sides:\n", task, phase))
-					print(table(rle(newstim$stim1_correct)$lengths))
-				}
-				
-				# Now write the files:
-				if (!(phase == "test" & task == "nct2") & phase == "test") { # any localizer task
-					file <- file.path(stimPath, sprintf("%s_task-%s_stimuli.csv", subject, task))
-					readr::write_excel_csv(newstim, file)
-				} else if (!(phase == "test" & task == "nct2") & phase == "practice") {
-					file <- file.path(stimPath, sprintf("%s_task-%s-practice_stimuli.csv", subject, task))
-					readr::write_excel_csv(newstim, file)
-				}
-				# write.csv(newstim, file, row.names=FALSE, quote=TRUE)
-				cat("wrote file:", file, "\n")
-				cat("\n\n\n")
 			}
 		}
 	}
 }
 
 
-#createStimFiles(bids=bidsPath, subjects=subjectNum, stimulusSets=rawstim, minisi=minISI, maxisi=maxISI)
-createStimFiles(bids=bidsPath, subjects=subjectNum, stimulusSets=rawstim, minisi=minISI, maxisi=maxISI)
+#createStimFiles(bids=bidsPath, subjects=subjectNum, stimulusSets=stimlist, minisi=minISI, maxisi=maxISI)
+createStimFiles(bids=bidsPath, subjects=subjectNum, stimulusSets=stimlist, minisi=minISI, maxisi=maxISI)
