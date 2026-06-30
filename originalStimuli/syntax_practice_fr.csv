@@ -1,0 +1,5 @@
+task,word_1,word_2,correct,error_position_syllable_word_2,error_position_word_2,inflection_type_word_2,syllable,conj_form,word_frequency_word_2,CV_word_1,CV_word_2
+example_instruction_conjugation,je,lis,1,0,0,1,2,1_ps_sgl,281.09,VCC,CVVCV
+example_instruction_conjugation,vous,avons,0,1,3,1,1,2_ps_plr,13572.4,VCC,CVCC
+example_instruction_declination,des,chèvres,1,na,na,2,2,na,14.08,CVVCV,CVVCVC
+example_instruction_declination,un,nombres,0,na,na,2,2,na,40.16,CVCC,CVCCVCC

@@ -1,0 +1,5 @@
+task,word_pt_1,word_pt_2,correct,Error_position_syllable,Error_position,prefix,suffix,type_pref_suf,word_frequency,CV_word_complete
+example_instruction_morph,rou,geur,1,0,na,na,na,eur,"1,16",CVVCVVC
+example_instruction_morph,rou,gesse,0,na,na,na,na,esse,na,CVVCVCCV
+example_instruction_morph,no,tion,1,0,0,na,na,tion,na,CVCVVC
+example_instruction_morph,fa,tion,0,na,na,na,na,tion,na,CVCVVC

@@ -1,0 +1,5 @@
+orthography_phonology,word_1,word_2,does_rhyme,syllables_word_1,syllables_word_2,word_1_frequency,word_2_frequency,CV_word_1,CV_word_2
+example_instruction,local,bocal,1,2,2,5.78,3.83,CVCVC,CVCVC
+example_instruction,terre,fer,1,2,1,294.45,37.08,CVCCV,CVC
+example_instruction,cas,sport,0,1,1,280.59,30.04,CVC,CCVCC
+example_instruction,début,zut,0,2,1,114.31,na,CVCVC,CVC

@@ -1,0 +1,5 @@
+task,word_pt_1,word_pt_2,correct,Error_position_syllable,Error_position,prefix,suffix,type_pref_suf,word_frequency,CV_word_complete
+example_instruction_morph,Faul,heit,1,0,na,0,1,heit,251,CVVCCVVC
+example_instruction_morph,Ab,fug,0,2,na,1,0,ab,.,VCCVC
+example_instruction_lex,Tau,be,1,0,0,na,na,na,487,CVVCV
+example_instruction_lex,Teu,be,0,1,2,na,na,na,.,CVVCV

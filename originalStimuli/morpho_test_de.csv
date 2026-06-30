@@ -1,0 +1,33 @@
+task;word_pt_1;word_pt_2;correct;Error_position_syllable;Error_position;prefix;suffix;type_pref_suf;word_frequency;CV_word_complete
+morph_task;Freund;schaft;1;0;na;0;1;schaft;5328;CCVVCCCCCVCC
+morph_task;Bot;schaft;1;0;na;0;1;schaft;4004;CVCCCCVCC
+morph_task;Ort;schaft;1;0;na;0;1;schaft;341;VCCCCCVCC
+morph_task;Hoff;schaft;0;2;na;0;1;schaft;0;CVCCCCCVCC
+morph_task;Herr;schaft;0;0;na;0;1;schaft;6319;CVCCCCCVCC
+morph_task;Zeit;schaft;1;2;na;0;1;schaft;0;CVVCCCCVCC
+morph_task;Freund;ung ;0;2;na;0;1;ung;0;CCVVCCVCC
+morph_task;Bot;ung;0;2;na;0;1;ung;0;CVCVCC
+morph_task;Frei;heit;1;0;na;0;1;heit;15335;CCVVCVVC
+morph_task;Wahr ;heit;1;0;na;0;1;heit;12745;CVCCCVVC
+morph_task;Zeug;nis;1;0;na;0;1;nis;2171;CVVCCVC
+morph_task;Frei;nis;0;2;na;0;1;nis;0;CCVVCVC
+morph_task;Schön;heit;1;0;na;0;1;heit;4594;CCCVCCVVC
+morph_task;Zeug;heit;0;2;na;0;1;heit;0;CVVCCVVC
+morph_task;Frei;keit;0;2;na;0;1;keit;0;CCVVCVVC
+morph_task;Wahr ;keit;0;2;na;0;1;keit;0;CVCCCVVC
+morph_task;Ab;bau;1;0;na;1;0;ab;1368;VCCVV
+morph_task;Ab;schied;1;0;na;1;0;ab;3004;VCCCCVVC
+morph_task;Ab;bruch;1;0;na;1;0;ab;1057;VCCCVCC
+morph_task;Ab;such;0;1;na;1;0;ab;0;VCCVCC
+morph_task;Ab;fall;1;0;na;1;0;ab;650;VCCVCC
+morph_task;Ab;weis;0;1;na;1;0;ab;0;VCCVVC
+morph_task;In;schied;0;1;na;1;0;in;0;VCCCCVVC
+morph_task;In;bau;0;1;na;1;0;in;0;VCCVV
+morph_task;Un;glück;1;0;na;1;0;un ;3168;VCCCVCC
+morph_task;Un;recht;1;0;na;1;0;un ;2812;VCCVCCC
+morph_task;Un;fall;1;0;na;1;0;un ;906;VCCVCC
+morph_task;Un;dacht;0;1;na;1;0;un ;0;VCCVCCC
+morph_task;Un;fug;1;0;na;1;0;un ;551;VCCVC
+morph_task;Un;such;0;1;na;1;0;un ;0;VCCVCC
+morph_task;In;glück;0;1;na;1;0;in;0;VCCCVCC
+morph_task;In;recht;0;1;na;1;0;in;0;VCCVCCC

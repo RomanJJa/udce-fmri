@@ -1,0 +1,5 @@
+task,word_pt_1,word_pt_2,correct,Error_position_syllable,Error_position,prefix,suffix,type_pref_suf,word_frequency,CV_word_complete
+example_instruction_lex,sau,ter,1,0,0,0,0,sau,na,CVVCVC
+example_instruction_lex,sau,tir,0,2,2,0,1,sau,na,CVVCVC
+example_instruction_lex,ci,tron,1,0,0,0,0,na,"10,92",CVCCVC
+example_instruction_lex,ni,tron,0,1,1,1,0,na,na,CVCCVC

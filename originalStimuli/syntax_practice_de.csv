@@ -1,0 +1,5 @@
+task,word_1,word_2,correct,error_position_syllable_word_2,error_position_word_2,inflection_type_word_2,syllable,conj_form,plural_form,word_frequency_word_2,CV_word_1,CV_word_2
+example_instruction_conjugation,ich,heiße,1,0,0,1,2,1_ps_sgl,na,993,VCC,CVVCV
+example_instruction_conjugation,ihr,habt,1,0,0,1,1,2_ps_plr,na,3144,VCC,CVCC
+example_instruction_declination,viele,Ziege,0,2,2,2,2,na,5,365,CVVCV,CVVCVC
+example_instruction_declination,zehn,Nummers,0,na,na,2,2,na,4,.,CVCC,CVCCVCC
