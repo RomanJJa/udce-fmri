@@ -1,0 +1,10 @@
+{
+	"func_BOLD_st3.4_gap.6": "task-nct2_st-3.4_gap-0.6",
+	"func_BOLD_st3.0_gap.6": "task-nct2_st-3.0_gap-0.6",
+	"phono_BOLD_st3.4_gap.6": "task-phono_st-3.4_gap-0.6",
+	"phono_BOLD_st3.0_gap.6": "task-phono_st-3.0_gap-0.6",
+	"morpho_BOLD_3.0_gap.6": "task-morpho_st-3.0_gap-0.6",
+	"morpho_BOLD_3.4_gap.6": "task-morpho_st-3.4_gap-0.6",
+	"lexi_BOLD_3.4_gap.6": "task-lexi_st-3.4_gap-0.6",
+	"lexi_BOLD_3.0_gap.6": "task-lexi_st-3.0_gap-0.6"
+}
