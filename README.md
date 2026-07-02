@@ -1,7 +1,12 @@
 # udce-fmri
 fMRI experiment for running comparison tasks for words or numbers in German and French. The experiments are programmed in MATLAB's Psychtoolbox (version 3.0.22 downloaded in May 2025; paid version). The fMRI analysis uses SPM 25.
 
-### 
+### create_sub_stimulus_sets.R
+By accessing the original stimulus sets from the originalStimuli directory, we can create stimulus sets for each participant:
+shuffle, pseudo-randomize, insert null events, manipulate inter-stimulus intervals.
+Stimulus sets will not be overwritten. If you would like to create new stimulus sets for a participant, please first delete their directory. 
+This way, we make sure that we do not overwrite stimuli from already collected data. Sure, we can always infer stimulus sets from the `/beh` directory,
+but we should always aim to keep all data for documentation.
 
 ### runTaskMRI_de.m
 This is the file for German participants because instructions will be needed in German language.
