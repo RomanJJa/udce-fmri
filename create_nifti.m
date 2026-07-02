@@ -1,10 +1,9 @@
 %% MATLAB script: Convert DICOM folders to NIfTI using MRIcroGL's dcm2niix
 
-
 % === USER SETTINGS ===
 mricrogl_path = 'C:\Users\Roman\Documents\MATLAB\MRIcroGL_windows\MRIcroGL';
-data_dir      = 'C:\Users\Roman\Documents\MATLAB\projects\udce-fmri\tasks\data';
-compressNII   = true;
+%data_dir      = 'C:\Users\Roman\Documents\MATLAB\projects\udce-fmri\tasks\data';
+data_dir      = 'D:\bids-numword';
 seq_subdir    = 'DICOM';
 tmp_subdir    = 'NIfTI';
 dcm2niix_file = 'dcm2niix';
@@ -14,13 +13,19 @@ end
 dcm2niix_exe  = fullfile(mricrogl_path, 'Resources', dcm2niix_file);
 
 % dictionary with Protocol names to task names:
-protocol2fn_str = fileread(fullfile(fileparts(data_dir), 'protocol2bids.json'));
+protocol2fn_path = fileparts(data_dir);
+protocol2fn_str = fileread(fullfile(protocol2fn_path, 'protocol2bids.json'));
 protocol2fn = jsondecode(protocol2fn_str);
 
 subj_dirs = subdirs(data_dir);
+subj_dirs = subj_dirs(startsWith(subj_dirs, 'sub-'));
+subj_dirs = {'sub-002'};
+
+% dcm2niix options:
+dcm2niix_options = '-z y -b y -f "%s_%p"'; % -z: compress; -b: bids json; -f: nice filenames
 
 for s = 1:numel(subj_dirs) % loop through all participants
-    % s  = 3
+    % s = 1
 
     subject_name = char(subj_dirs(s));
     subject_dir  = fullfile(data_dir, subject_name);
@@ -37,15 +42,9 @@ for s = 1:numel(subj_dirs) % loop through all participants
     if max(height(dicom_seqs), width(dicom_seqs)) < 0 || ...
        (length(dir(func_dir)) > 2 && length(dir(anant_dir)) > 2)
         fprintf('\nSkipped subject %s\n', subject_name);
-        continue;
+        %continue;
     end
     
-    % Recommended dcm2niix options
-    if (compressNII)
-        opts = '-z y -b y -f "%s_%p"';         % compress + BIDS json + nice names
-    else
-        opts = '-z n -b y -f "%s_%p"';
-    end
     % Add more if needed: ' -x y' for cropping, etc.
     
     %fprintf('Found %d subject folder(s).\n', numel(seq_dirs));
@@ -62,7 +61,8 @@ for s = 1:numel(subj_dirs) % loop through all participants
         end
         
         % Build command (quote paths with spaces)
-        cmd = sprintf('"%s" %s -o "%s" "%s"', dcm2niix_exe, opts, char(tmp_dirs(i)), char(seq_dirs(i)));
+        cmd = sprintf('"%s" %s -o "%s" "%s"', dcm2niix_exe, dcm2niix_options, ...
+                      char(tmp_dirs(i)), char(seq_dirs(i)));
         
         dicom_seq = char(dicom_seqs(i));
         
@@ -149,15 +149,18 @@ for s = 1:numel(subj_dirs) % loop through all participants
             info.folder = 'func';
         end
         
+        if ~isfolder(fullfile(subject_dir, info.folder))
+            mkdir(fullfile(subject_dir, info.folder));
+        end
+
         new_filename = sprintf('%s%s_sn-%s_%s', subject_name, info.name, seriesNumber, info.type);
         
         %% Now move file into /func directory and rename it:
         copyfile(json_path, fullfile(subject_dir, info.folder, [new_filename '.json']));
-        if endsWith(nifti_path, '.gz', 'IgnoreCase', true)
-            copyfile(nifti_path, fullfile(subject_dir, info.folder, [new_filename '.nii.gz']));
-        else
-            copyfile(nifti_path, fullfile(subject_dir, info.folder, [new_filename '.nii']));
-        end
+        copied_path = fullfile(subject_dir, info.folder, [new_filename '.nii.gz']);
+        copyfile(nifti_path, copied_path);
+        gunzip(copied_path); % unzip in copied path
+        delete(copied_path);
     end
     
 end

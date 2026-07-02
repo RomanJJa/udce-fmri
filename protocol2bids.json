@@ -1,10 +1,117 @@
 {
-	"func_BOLD_st3.4_gap.6": "task-nct2_st-3.4_gap-0.6",
-	"func_BOLD_st3.0_gap.6": "task-nct2_st-3.0_gap-0.6",
-	"phono_BOLD_st3.4_gap.6": "task-phono_st-3.4_gap-0.6",
-	"phono_BOLD_st3.0_gap.6": "task-phono_st-3.0_gap-0.6",
-	"morpho_BOLD_3.0_gap.6": "task-morpho_st-3.0_gap-0.6",
-	"morpho_BOLD_3.4_gap.6": "task-morpho_st-3.4_gap-0.6",
-	"lexi_BOLD_3.4_gap.6": "task-lexi_st-3.4_gap-0.6",
-	"lexi_BOLD_3.0_gap.6": "task-lexi_st-3.0_gap-0.6"
+	"func_BOLD_st3.4_gap.6": {
+		"name": "task-nct2_st-3.4_gap-0.6",
+		"folder": "func",
+		"type": "bold"
+	},
+	"func_BOLD_st3.0_gap.6": {
+		"name": "task-nct2_st-3.0_gap-0.6",
+		"folder": "func",
+		"type": "bold"
+	},
+	"phono_BOLD_st3.4_gap.6": {
+		"name": "task-phono_st-3.4_gap-0.6",
+		"folder": "func",
+		"type": "bold"
+	},
+	"phono_BOLD_st3.0_gap.6": {
+		"name": "task-phono_st-3.0_gap-0.6",
+		"folder": "func",
+		"type": "bold"
+	},
+	"morpho_BOLD_3.0_gap.6": {
+		"name": "task-morpho_st-3.0_gap-0.6",
+		"folder": "func",
+		"type": "bold"
+	},
+	"morpho_BOLD_3.4_gap.6": {
+		"name": "task-morpho_st-3.4_gap-0.6",
+		"folder": "func",
+		"type": "bold"
+	},
+	"lexi_BOLD_3.4_gap.6": {
+		"name": "task-lexi_st-3.4_gap-0.6",
+		"folder": "func",
+		"type": "bold"
+	}, 
+	"lexi_BOLD_3.0_gap.6": {
+		"name": "task-lexi_st-3.0_gap-0.6",
+		"folder": "func",
+		"type": "bold"
+	},
+	"anat-scout": {
+		"name": "",
+		"folder": "anat",
+		"type": "scout"
+	},
+	"anat-T1w_acq-MPRAGE": {
+		"name": "acq-mprage",
+		"folder": "anat",
+		"type": "T1w"
+	},
+	"fmap-magnitude1_acq-B0map2dNTCrun1": {
+		"name": "run-1_try-1_acq-b0",
+		"folder": "fmap",
+		"type": "fmap"
+	},
+	"fmap-magnitude2_acq-B0map2dNTCrun1": {
+		"name": "run-1_try-2_acq-b0",
+		"folder": "fmap",
+		"type": "fmap"
+	},
+	"BOLD_task-2dNCT_run-1": {
+		"name": "task-nct2_run-1",
+		"folder": "func",
+		"type": "bold"
+	},
+	"fmap-magnitude1_acq-B0map2dNTCrun2": {
+		"name": "run-2_try-1_acq-b0",
+		"folder": "fmap",
+		"type": "fmap"
+	},
+	"fmap-magnitude2_acq-B0map2dNTCrun2": {
+		"name": "run-2_try-2_acq-b0",
+		"folder": "fmap",
+		"type": "fmap"
+	},
+	"BOLD_task-2dNCT_run-2": {
+		"name": "task-nct2_run-2",
+		"folder": "func",
+		"type": "bold"
+	},
+	"fmap-magnitude1_acq-B0maplocators": {
+		"name": "try-1",
+		"folder": "fmap",
+		"type": "scout"
+	},
+	"fmap-magnitude2_acq-B0maplocators": {
+		"name": "try-2",
+		"folder": "fmap",
+		"type": "scout"
+	},
+	"BOLD_task-lexi": {
+		"name": "task-lexi",
+		"folder": "func",
+		"type": "bold"
+	},
+	"BOLD_task-morpho": {
+		"name": "task-morpho",
+		"folder": "func",
+		"type": "bold"
+	},
+	"BOLD_task-synt": {
+		"name": "task-syntax",
+		"folder": "func",
+		"type": "bold"
+	},
+	"BOLD_task-phono": {
+		"name": "task-phono",
+		"folder": "func",
+		"type": "bold"
+	},
+	"BOLD_task-1dNCT": {
+		"name": "task-nct1",
+		"folder": "func",
+		"type": "bold"
+	}
 }
