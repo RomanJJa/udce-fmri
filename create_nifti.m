@@ -42,7 +42,7 @@ for s = 1:numel(subj_dirs) % loop through all participants
     if max(height(dicom_seqs), width(dicom_seqs)) < 0 || ...
        (length(dir(func_dir)) > 2 && length(dir(anant_dir)) > 2)
         fprintf('\nSkipped subject %s\n', subject_name);
-        %continue;
+        continue;
     end
     
     % Add more if needed: ' -x y' for cropping, etc.

@@ -26,7 +26,7 @@ This is the file for French-speaking participants in Germany because instruction
 ### create_nifti.m
 We can create NIfTIs automatically from DICOM files via MRIcroGL. Compatible with Windows, Mac, and Linux, 
 we can access the MRIcroGL from MATLAB by simply adjusting the paths to those of our working machine 
-(path to BIDS folder, path to MRIcroGL, indicating whether we want ".nii.gz" or ".nii", and then we are good to go. 
+(path to BIDS folder, path to MRIcroGL, and then we are good to go. 
 The script scans participants for whether the `/func` or `/anat` directories are already filled. 
 If one of them is not filled, it starts the  DICOM-to-NIfTI conversion.
 
