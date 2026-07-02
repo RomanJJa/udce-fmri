@@ -1,5 +1,7 @@
 # udce-fmri
-fMRI experiment for running comparison tasks for words or numbers in German and French. The experiments are programmed in MATLAB's Psychtoolbox (version 3.0.22 downloaded in May 2025; paid version). The fMRI analysis uses SPM 25.
+fMRI experiment for running comparison tasks for words or numbers in German and French. The experiments are programmed in MATLAB's Psychtoolbox (version 3.0.22 downloaded in May 2025; paid version).
+The fMRI analysis uses [SPM 25](https://github.com/spm/spm/releases).
+DICOM to NIfTI conversion utilizes *dcm2niix* of [MRIcroGL](https://www.nitrc.org/projects/mricrogl/).
 
 ### create_sub_stimulus_sets.R
 By accessing the original stimulus sets from the originalStimuli directory, we can create stimulus sets for each participant:
@@ -7,6 +9,13 @@ shuffle, pseudo-randomize, insert null events, manipulate inter-stimulus interva
 Stimulus sets will not be overwritten. If you would like to create new stimulus sets for a participant, please first delete their directory. 
 This way, we make sure that we do not overwrite stimuli from already collected data. Sure, we can always infer stimulus sets from the `/beh` directory,
 but we should always aim to keep all data for documentation.
+
+### fixation_cross.m
+Display a fixation cross to check the center of the screen in the scanner.
+
+### welcome_screen.m
+Open the welcome screen when a participant arrives. Before acquiring any data, 
+you can adjust the display to the screen that is visible from the participant's view. 
 
 ### runTaskMRI_de.m
 This is the file for German participants because instructions will be needed in German language.
