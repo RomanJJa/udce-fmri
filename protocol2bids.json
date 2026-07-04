@@ -44,6 +44,16 @@
 		"folder": "anat",
 		"type": "scout"
 	},
+	"iMAP_Head_HEAD": {
+		"name": "",
+		"folder": "anat",
+		"type": "scout"
+	},
+	"iAAS_Head_HEAD": {
+		"name": "",
+		"folder": "anat",
+		"type": "shimming"
+	},
 	"anat-T1w_acq-MPRAGE": {
 		"name": "acq-mprage",
 		"folder": "anat",
