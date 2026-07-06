@@ -4,13 +4,13 @@ clear; clc;
 
 % add SPM25 and data to path
 spmDir = 'C:\Users\Roman\Documents\MATLAB\toolbox\spm';
-%dataDir = 'C:\Users\Roman\Documents\MATLAB\projects\udce-fmri\tasks\data';
-dataDir = 'D:\bids-numword';
-skipProcessWhen = '^s2_w_r_v_'; % if this file exists, skip the preprocessing for this task
-skipProcessed = false;
+%data_dir = 'C:\Users\Roman\Documents\MATLAB\projects\udce-fmri\tasks\data';
+data_dir = 'D:\bids-numword';
+skipProcessWhen = '^s2_w_r_'; % if this file exists, skip the preprocessing for this task
+exclude_subj  = {'sub-000'};
 
-tasks = {'nct2', 'nct2', 'nct1', 'phono', 'syntax', 'morpho', 'lexi'};
-runs  = {'_run-1_', '_run-2_', 'n', 'n', 'n', 'n', 'n'};
+tasks  = {'nct2', 'nct2', 'nct1', 'phono', 'syntax', 'morpho', 'lexi'};
+pattern = {'_run-1_', '_run-2_', '', '', '', '', ''};
 
 % Important variables:
 %TR            = 2.0;              % Repetition Time (s)
@@ -27,15 +27,17 @@ spm('defaults','fmri');
 spm_jobman('initcfg');
 
 % List of subjects:
-subj_dirs = subdirs(dataDir);
-subj_dirs = subj_dirs(startsWith(subj_dirs, 'sub-'));
-subj_dirs = {'sub-002'};
+data_subdirs = subdirs(data_dir);
+subjects = data_subdirs(startsWith(data_subdirs, 'sub-'));
+%subjects  = {'sub-007'};
+subjects = setdiff(subjects, exclude_subj);
 
-for s = 1:numel(subj_dirs) % loop over all participants
-    % s = 2; t = 2;
-    
-    subject_name = char(subj_dirs(s));
-    subjectDir = fullfile(dataDir, subject_name);
+
+for s = 1:numel(subjects) % loop over all participants
+    % s = 1; t = 1;
+    subject_name = char(subjects(s));
+    fprintf('\n=== Started pre-processing data for %s ===\n', subject_name);
+    subjectDir = fullfile(data_dir, subject_name);
     if ~isfolder(subjectDir)
         warning('\nSubject folder not found: %s\n', subjectDir);
         continue;
@@ -43,21 +45,24 @@ for s = 1:numel(subj_dirs) % loop over all participants
     
     for t = 1:numel(tasks) % loop over all tasks
         
-        task_name = char(tasks(t));
-        run_name  = char(runs(t));
+        task_name  = char(tasks(t));
+        fn_pattern = char(pattern(t));
         
-        % Try to select potential previously processed files:
-        fileselector = {skipProcessWhen, [subject_name '_'], ['_task-' task_name], run_name, '_bold.nii'};
-        bidsSelected = bids_select(dataDir, [subject_name '/func/'], fileselector);
-        
-        if ~isempty(bidsSelected) || skipProcessed
-            fprintf('\nSkipped task-%s in subject %s\n', task_name, subject_name);
+        % Try to select potentially previously processed files:
+        fileselector = {skipProcessWhen, [subject_name '_'], ['_task-' task_name], fn_pattern, '_bold.nii'};
+        bidsSelected = bids_select(data_dir, [subject_name '/func/'], fileselector);
+        if ~isempty(bidsSelected)
+            fprintf('\nSkipped task-%s in subject %s: Already pre-processed.\n', task_name, subject_name);
             continue;
         end
-        
+
         % functional file
-        fileselector = {['^' subject_name '_'], ['_task-' task_name], run_name, '_bold.nii'};
-        bidsSelected = bids_select(dataDir, [subject_name '/func/'], fileselector);
+        fileselector = {['^' subject_name '_'], ['_task-' task_name], fn_pattern, '_bold.nii'};
+        bidsSelected = bids_select(data_dir, [subject_name '/func/'], fileselector);
+        if isempty(bidsSelected)
+            warning('\nSkipped task-%s in subject %s: No functional file found.\n', task_name, subject_name);
+            continue;
+        end
         [funcDir, funcFilename, funcFormat] = fileparts(char(bidsSelected(1)));
         funcFilename = [funcFilename funcFormat];
         
@@ -65,7 +70,7 @@ for s = 1:numel(subj_dirs) % loop over all participants
         % Careful: for sub-005, pick the most recent anatomical file!!!
         % We want to earlier series number?
         fileselector = {['^' subject_name '_'], '_T1w.nii'};
-        bidsSelected = bids_select(dataDir, [subject_name '/anat/'], fileselector);
+        bidsSelected = bids_select(data_dir, [subject_name '/anat/'], fileselector);
         [anatDir, anatFilename, anatFormat] = fileparts(char(bidsSelected(1)));
         anatFilename = [anatFilename anatFormat];
 
