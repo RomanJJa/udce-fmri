@@ -21,6 +21,9 @@ targetVoxelBox = [3.0 3.0 3.0];    % size of the voxel (mm)
 
 %% Start the preprocessing
 
+% printing deliminator:
+printDelim = '========================================================================';
+
 % fire up SPM
 addpath(genpath(spmDir));
 spm('defaults','fmri');
@@ -36,10 +39,16 @@ subjects = setdiff(subjects, exclude_subj);
 for s = 1:numel(subjects) % loop over all participants
     % s = 1; t = 1;
     subject_name = char(subjects(s));
-    fprintf('\n=== Started pre-processing data for %s ===\n', subject_name);
+    fprintf('\n\n%s\nStarted pre-processing data for %s\n%s\n\n', ...
+            printDelim, subject_name, printDelim);
     subjectDir = fullfile(data_dir, subject_name);
     if ~isfolder(subjectDir)
         warning('\nSubject folder not found: %s\n', subjectDir);
+        continue;
+    end
+
+    if ~isfolder(fullfile(subjectDir, 'func'))
+        warning('\nNo subdirectory for functional data (/func) found in %s folder: %s\n', subject_name, subjectDir);
         continue;
     end
     
@@ -55,7 +64,9 @@ for s = 1:numel(subjects) % loop over all participants
             fprintf('\nSkipped task-%s in subject %s: Already pre-processed.\n', task_name, subject_name);
             continue;
         end
-
+        
+        fprintf('\nStarted pre-processing task-%s in subject %s.\n', task_name, subject_name);
+        
         % functional file
         fileselector = {['^' subject_name '_'], ['_task-' task_name], fn_pattern, '_bold.nii'};
         bidsSelected = bids_select(data_dir, [subject_name '/func/'], fileselector);
@@ -73,7 +84,7 @@ for s = 1:numel(subjects) % loop over all participants
         bidsSelected = bids_select(data_dir, [subject_name '/anat/'], fileselector);
         [anatDir, anatFilename, anatFormat] = fileparts(char(bidsSelected(1)));
         anatFilename = [anatFilename anatFormat];
-
+        
         funcFile = fullfile(funcDir, funcFilename);
         anatFile = fullfile(subjectDir, 'anat', anatFilename); % ['sub-' subject '_T1w.nii']
         
@@ -83,7 +94,7 @@ for s = 1:numel(subjects) % loop over all participants
         fprintf('Raw NIfTI dimentions: [%d×%d×%d] with %d volumes.\n', nDim, nVolumes);
         sliceOrder     = 1:nDim(3);        % Ascending: 1 to  number of slices
         refSlice       = floor(nDim(3)/2); % Middle slice (for STC): here 16
-
+        
         %% Read JSON description file:
         % filename in JSON extension (same name as NIfTI file but ending with ".json"):
         jsonFile    = regexprep(funcFile,'\.nii(\.gz)?$','.json');
