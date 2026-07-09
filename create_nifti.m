@@ -7,6 +7,7 @@ data_dir      = 'D:\bids-numword';
 seq_subdir    = 'DICOM';
 tmp_subdir    = 'NIfTI';
 dcm2niix_file = 'dcm2niix';
+exclude_subj  = {'sub-000'};
 if ispc
     dcm2niix_file = [dcm2niix_file '.exe'];
 end
@@ -17,9 +18,10 @@ protocol2fn_path = fileparts(data_dir);
 protocol2fn_str = fileread(fullfile(protocol2fn_path, 'protocol2bids.json'));
 protocol2fn = jsondecode(protocol2fn_str);
 
-subj_dirs = subdirs(data_dir);
-subj_dirs = subj_dirs(startsWith(subj_dirs, 'sub-'));
-subj_dirs = {'sub-002'};
+dada_subdirs = subdirs(data_dir);
+subj_dirs = dada_subdirs(startsWith(dada_subdirs, 'sub-'));
+subj_dirs = setdiff(subj_dirs, exclude_subj);
+%subj_dirs = {'sub-006','sub-007'};
 
 % dcm2niix options:
 dcm2niix_options = '-z y -b y -f "%s_%p"'; % -z: compress; -b: bids json; -f: nice filenames
@@ -52,17 +54,22 @@ for s = 1:numel(subj_dirs) % loop through all participants
     if ~exist(func_dir)
         mkdir(func_dir);
     end
-    
+
+    if isempty(seq_dirs)
+        warning('Folder "dicom" in subject %s is empty.', subject_name);
+    end
+
     for i = 1:numel(seq_dirs)
         % i=4
-        
-        if ~exist(char(tmp_dirs(i)))
-            mkdir(char(tmp_dirs(i)));
+
+        nifti_dir = char(tmp_dirs(i));
+        if ~exist(nifti_dir, 'file')
+            mkdir(nifti_dir);
         end
         
         % Build command (quote paths with spaces)
         cmd = sprintf('"%s" %s -o "%s" "%s"', dcm2niix_exe, dcm2niix_options, ...
-                      char(tmp_dirs(i)), char(seq_dirs(i)));
+                      nifti_dir, char(seq_dirs(i)));
         
         dicom_seq = char(dicom_seqs(i));
         
@@ -76,22 +83,21 @@ for s = 1:numel(subj_dirs) % loop through all participants
         end
         
         % Now rename and move the files:
-        new_files = {dir(char(tmp_dirs(i))).name};
+        new_files = {dir(nifti_dir).name};
         new_files(ismember(new_files, {'.', '..'})) = [];
         
         isJson    = endsWith(new_files, '.json', 'IgnoreCase', true);
         json_file = new_files(isJson);
         json_file = char(json_file(1));
-        json_path = fullfile(char(tmp_dirs(i)), json_file);
-        
+        json_path = fullfile(nifti_dir, json_file);
+        json_str  = fileread(json_path);
+        json_data = jsondecode(json_str);
+
         isNiftiGz   = endsWith(new_files, '.nii.gz', 'IgnoreCase', true);
         isNifti     = endsWith(new_files, '.nii', 'IgnoreCase', true);
         nifti_files = new_files(isNiftiGz | isNifti);
         nifti_file  = char(nifti_files(1));
-        nifti_path  = fullfile(char(tmp_dirs(i)), nifti_file);
-        
-        json_str  = fileread(json_path);
-        json_data = jsondecode(json_str);
+        nifti_path  = fullfile(nifti_dir, nifti_file);
         
         seriesNumber = 'NULL';
         if isfield(json_data, 'SeriesNumber')
@@ -127,7 +133,8 @@ for s = 1:numel(subj_dirs) % loop through all participants
         % periods! MATLAB does not allow any characters in structs.
         protocol_name_mat = regexprep(protocol_name, '[^a-zA-Z0-9_]', '_');  % replace(protocol_name, '.', '_');
         if ~isfield(protocol2fn, protocol_name_mat)
-            error('Protocol name "%s" does not exist in pre-defined protocol2fn object.', protocol_name)
+            error('Protocol name "%s" does not exist in pre-defined protocol2fn object\n(subject %s at series number: %s).', ...
+                  protocol_name, subject_name, dicom_seq);
         end
         
         info = protocol2fn.(protocol_name_mat);
