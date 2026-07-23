@@ -5,7 +5,7 @@ bidsPath <- file.path(path, "data")
 setwd(paste0(path,"/originalStimuli"))
 
 
-subjectNum <- c(0:40)
+subjectNum <- c(0:4)
 tasks <- c("nct1","nct2","phono","lexi","morpho","syntax")
 langs  <- c("de", "fr")
 minISI <- 1000
@@ -13,6 +13,13 @@ maxISI <- 3000
 # trialsPerBlock <- 32 # after every "trialsPerBlock" trials, there is a pause
 # 64 null events
 
+
+package_list <- c("readr")
+new_packages <- package_list[!(package_list %in% installed.packages()[,"Package"])]
+if(length(new_packages) > 0) install.packages(new_packages)
+
+library("readr")
+options("encoding" = "UTF-8")
 
 
 ### Functions
@@ -252,17 +259,28 @@ shiftStimuli <- function(data, shift=" ") {
 }
 
 
+smartReadCSV <- function(file,mincol=2) {
+	# file <- "lexi_practice_de.csv"; mincol=2
+	x <- as.data.frame(readr::read_delim(file, delim=","), locale = locale(encoding = "UTF-8"))
+	if (ncol(x) >= mincol) {
+		return(x)
+	}
+	x <- as.data.frame(readr::read_delim(file, delim=";"), locale = locale(encoding = "UTF-8"))
+	return(x)
+}
+
+
 ### Load stimulus sets and 
-library(readr)
-options("encoding" = "UTF-8")
 stimlist <- rawstim <- list()
 
 for (lang in langs) {
 	for (task in tasks) {
-		rawstim[[task]][["test"]] <- as.data.frame(read_csv(sprintf("%s_test_%s.csv", task, lang),
-											                locale = locale(encoding = "UTF-8")))
-		rawstim[[task]][["practice"]] <- as.data.frame(read_csv(sprintf("%s_practice_%s.csv", task, lang),
-												                locale = locale(encoding = "UTF-8")))
+		#rawstim[[task]][["test"]] <- as.data.frame(read_csv(sprintf("%s_test_%s.csv", task, lang),
+		#									                locale = locale(encoding = "UTF-8")))
+		#rawstim[[task]][["practice"]] <- as.data.frame(read_csv(sprintf("%s_practice_%s.csv", task, lang),
+		#										                locale = locale(encoding = "UTF-8")))
+		rawstim[[task]][["test"]] <- smartReadCSV(sprintf("%s_test_%s.csv", task, lang))
+		rawstim[[task]][["practice"]] <- smartReadCSV(sprintf("%s_practice_%s.csv", task, lang))
 		
 		## Add missing necessary columns to stimulus sets	
 		## Required columns
