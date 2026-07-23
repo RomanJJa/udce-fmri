@@ -1,0 +1,69 @@
+﻿"task","word_1","word_2","correct","error_position_syllable_word_2","error_position_word_2","inflection_type_word_2","syllable","conj_form","plural_form","word_frequency_word_2","CV_word_1","CV_word_2","stim1","stim2","condition","stim1_correct","is_null","isi"
+"declination","keine","Gummis",1,"na","na",2,2,"na","4","21","CVVCV","CVCCVC ","keine","Gummis","noun-true",1,0,500
+"declination","keine","Vögel",1,"na","na",2,2,"na","6","2359","CVVCV","CVCVC","keine","Vögel","noun-true",1,0,500
+"conjugation","ihr","lest",1,"0","0",1,1,"2_ps_plr","na","58","VCC","CVCC","ihr","lest","verb-true",1,0,500
+"conjugation","du ","wohnt",0,"1","3",1,1,"2_ps_sgl","na","1668","CV","CVCCCC","du ","wohnt","verb-false",0,0,500
+"conjugation","ihr","steht",1,"0","0",1,1,"2_ps_plr","na","34507","VCC","CCVCCC","ihr","steht","verb-true",1,0,500
+"conjugation","ihr","zählst",0,"1","3",1,1,"2_ps_plr","na","21","VCC","CVCCCC","ihr","zählst","verb-false",0,0,500
+"conjugation","wir","schläfen",0,"1","2",1,2,"1_ps_plr","na",".","CVC","CCCCVCVC","wir","schläfen","verb-false",0,0,500
+"declination","alle","Böte",0,"na","na",2,2,"na","2",".","VCCV","CVCV","alle","Böte","noun-false",0,0,500
+"conjugation","wir","essen",1,"0","0",1,2,"1_ps_plr","na","465","CVC","VCCVC","wir","essen","verb-true",1,0,500
+"declination","neun","Wänge",0,"na","na",2,2,"na","6",".","CVVC","CVCCV","neun","Wänge","noun-false",0,0,500
+"declination","drei","Worte",1,"na","na",2,2,"na","3","15264","CCVV","CVCCV","drei","Worte","noun-true",1,0,500
+"conjugation","du ","nimmst",1,"0","0",1,1,"2_ps_sgl","na","458","CV","CVCCCC","du ","nimmst","verb-true",1,0,500
+"conjugation","ihr","liest",0,"1","2",1,1,"2_ps_plr","na","2283","VCC","CVVCC","ihr","liest","verb-false",0,0,500
+"example_instruction_declination","viele","Ziegen",1,"na","na",2,2,"na","5","365","CVVCV","CVVCVC","viele","Ziegen","noun-true",1,0,500
+"declination","viele","Igel",1,"na","na",2,2,"na","1","242","CVVCV","VCVC","viele","Igel","noun-true",1,0,500
+"conjugation","ich","komme",1,"0","0",1,2,"1_ps_sgl","na","5726","VCC","CVCCV","ich","komme","verb-true",1,0,500
+"declination","alle","Nudel",0,"na","na",2,2,"na","1","22","VCCV","CVCVC","alle","Nudel","noun-false",0,0,500
+"declination","keine","Tünnel",0,"na","na",2,2,"na","6",".","CVVCV","CVVCV","keine","Tünnel","noun-false",0,0,500
+"declination","vier","Pferds",0,"na","na",2,1,"na","4",".","CVVC","CCVCCC","vier","Pferds","noun-false",0,0,500
+"declination","manche","Bücher",1,"na","na",2,2,"na","2","7114","CVCCCV","CVVCVC","manche","Bücher","noun-true",1,0,500
+"declination","drei","Glase",0,"na","na",2,2,"na","3",".","CCVV","CCVCV","drei","Glase","noun-false",0,0,500
+"declination","zwei","Spiele",1,"na","na",2,2,"na","3","1665","CCVV","CCVVCV","zwei","Spiele","noun-true",1,0,500
+"declination","neun","Nägel",1,"na","na",2,2,"na","6","574","CVVC","CVCVC","neun","Nägel","noun-true",1,0,500
+"declination","manche","Spängen",0,"na","na",2,2,"na","2",".","CVCCCV","CCVCCVC","manche","Spängen","noun-false",0,0,500
+"declination","alle","Preise",1,"na","na",2,2,"na","3","4732","VCCV","CCVVCV","alle","Preise","noun-true",1,0,500
+"declination","manche","Gärtens",0,"na","na",2,2,"na","2",".","CVCCCV","CVCCVCC","manche","Gärtens","noun-false",0,0,500
+"conjugation","wir","schwimmst",0,"1","3",1,1,"1_ps_plr","na","6","CVC","CCCCVCCCC","wir","schwimmst","verb-false",0,0,500
+"conjugation","ihr","fährt",0,"1","2",1,1,"2_ps_plr","na","3765","VCC","CVCCCC","ihr","fährt","verb-false",0,0,500
+"declination","acht","Fragen",1,"na","na",2,2,"na","5","20800","VCCC","CCVCVC","acht","Fragen","noun-true",1,0,500
+"conjugation","du ","trägst",1,"0","0",1,1,"2_ps_sgl","na","100","CV","CCVCCC","du ","trägst","verb-true",1,0,500
+"declination","fünf","Bilders",0,"na","na",2,2,"na","4",".","CVCC","CVCCVCC","fünf","Bilders","noun-false",0,0,500
+"conjugation","ich","gehen",0,"2","3",1,2,"1_ps_sgl","na","8539","VCC","CVCV","ich","gehen","verb-false",0,0,500
+"conjugation","ihr","zählt",1,"0","0",1,1,"2_ps_plr","na","2049","VCC","CVCCCC","ihr","zählt","verb-true",1,0,500
+"conjugation","du ","machst",1,"0","0",1,1,"2_ps_sgl","na","1170","CV","CVCCCC","du ","machst","verb-true",1,0,500
+"example_instruction_declination","zehn","Nummers",0,"na","na",2,2,"na","4",".","CVCC","CVCCVCC","zehn","Nummers","noun-false",0,0,500
+"conjugation","du ","wohnst",1,"0","0",1,1,"2_ps_sgl","na","87","CV","CVCCCC","du ","wohnst","verb-true",1,0,500
+"declination","alle","Männer",1,"na","na",2,2,"na","2","14883","VCCV","CVCCVCC","alle","Männer","noun-true",1,0,500
+"conjugation","wir","malens",0,"2","3",1,2,"1_ps_plr","na",".","CVC","CVCVCC","wir","malens","verb-false",0,0,500
+"conjugation","ich","laufe",1,"0","0",1,2,"1_ps_sgl","na","427","VCC","CVVCV","ich","laufe","verb-true",1,0,500
+"example_instruction_conjugation","ihr","habt",1,"0","0",1,1,"2_ps_plr","na","3144","VCC","CVCC","ihr","habt","verb-true",1,0,500
+"conjugation","du ","tragst",0,"1","2",1,1,"2_ps_sgl","na","2","CV","CCVCCC","du ","tragst","verb-false",0,0,500
+"conjugation","wir","esst",0,"1","2",1,1,"1_ps_plr","na",".","CVC","VCCC","wir","esst","verb-false",0,0,500
+"declination","sechs","Zwiebeln",1,"na","na",2,2,"na","5","646","CVCCC","CCVVCVCC","sechs","Zwiebeln","noun-true",1,0,500
+"declination","viele","Ratte",0,"na","na",2,2,"na","1","283","CVVCV","CVCCV","viele","Ratte","noun-false",0,0,500
+"conjugation","wir","malen",1,"0","0",1,2,"1_ps_plr","na","77","CVC","CVCVC","wir","malen","verb-true",1,0,500
+"declination","viele","Gürtel",1,"na","na",2,2,"na","1","769","CVVCV","CVCCVCC","viele","Gürtel","noun-true",1,0,500
+"conjugation","wir","schlafen",1,"0","0",1,2,"1_ps_plr","na","385","CVC","CCCCVCVC","wir","schlafen","verb-true",1,0,500
+"declination","viele","Kino",0,"na","na",2,2,"na","1","1444","CVVCV","CVCV","viele","Kino","noun-false",0,0,500
+"declination","acht","Löffeln",0,"na","na",2,2,"na","5",".","VCCC","CVCCVCC","acht","Löffeln","noun-false",0,0,500
+"declination","vier","Autos",1,"na","na",2,2,"na","4","1787","CVVC ","VVCVC","vier","Autos","noun-true",1,0,500
+"declination","sechs","Kinders",0,"na","na",2,2,"na","4",".","CVCCC","CVCCVCC","sechs","Kinders","noun-false",0,0,500
+"declination","zwei","Dose",0,"na","na",2,2,"na","3","399","CCVV","CVCV","zwei","Dose","noun-false",0,0,500
+"conjugation","ich","läufe",0,"1","2",1,2,"1_ps_sgl","na","3","VCC","CVVCV","ich","läufe","verb-false",0,0,500
+"example_instruction_conjugation","ich","heiße",1,"0","0",1,2,"1_ps_sgl","na","993","VCC","CVVCV","ich","heiße","verb-true",1,0,500
+"declination","sieben","Frauen",1,"na","na",2,2,"na","5","18546","CVVCVC","CCVVVC","sieben","Frauen","noun-true",1,0,500
+"conjugation","ihr","stehst",0,"1","3",1,1,"2_ps_plr","na","357","VCC","CCVCCC","ihr","stehst","verb-false",0,0,500
+"conjugation","ich","koche",1,"0","0",1,2,"1_ps_sgl","na","94","VCC","CVCCV","ich","koche","verb-true",1,0,500
+"conjugation","ich","köche",0,"1","2",1,2,"1_ps_sgl","na",".","VCC","CVCCV","ich","köche","verb-false",0,0,500
+"conjugation","ihr","fahrt",1,"0","0",1,1,"2_ps_plr","na","89","VCC","CVCCCC","ihr","fahrt","verb-true",1,0,500
+"conjugation","ich","gehe",1,"0","0",1,2,"1_ps_sgl","na","5315","VCC","CVCV","ich","gehe","verb-true",1,0,500
+"declination","sieben","Fenstern",0,"na","na",2,2,"na","5",".","CVVCVC","CVCCCVCC","sieben","Fenstern","noun-false",0,0,500
+"conjugation","du ","nehmst",0,"1","2",1,1,"2_ps_sgl","na",".","CV","CVCCCC","du ","nehmst","verb-false",0,0,500
+"declination","keine","Wünder",0,"na","na",2,2,"na","6",".","CVVCV","CVCCVC","keine","Wünder","noun-false",0,0,500
+"conjugation","wir","schwimmen",1,"0","0",1,2,"1_ps_plr","na","273","CVC","CCCCVCCVC","wir","schwimmen","verb-true",1,0,500
+"declination","fünf","Fotos",1,"na","na",2,2,"na","4","726","CVCC","CVCVC","fünf","Fotos","noun-true",1,0,500
+"declination","manche","Reifen",1,"na","na",2,2,"na","1","784","CVCCCV","CVVCVC","manche","Reifen","noun-true",1,0,500
+"conjugation","ich","kommt",0,"2","1",1,1,"1_ps_sgl","na","40311","VCC","CVCCV","ich","kommt","verb-false",0,0,500
+"conjugation","du ","macht",0,"1","3",1,1,"2_ps_sgl","na","26594","CV","CVCCCC","du ","macht","verb-false",0,0,500

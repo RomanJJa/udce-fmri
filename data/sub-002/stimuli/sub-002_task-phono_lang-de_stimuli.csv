@@ -1,0 +1,65 @@
+﻿"orthography_phonology","word_1","word_2","does_rhyme","syllables_word_1","syllables_word_2","word_1_frequency","word_2_frequency","CV_word_1","CV_word_2","stim1","stim2","condition","stim1_correct","is_null","isi"
+"dif_phon_eq_orth","Bahn","Bann",0,1,1,3832,744,"CVCC","CVCC","Bahn","Bann","dif-phon-eq-orth",0,0,500
+"dif_phon_eq_orth","Schuss","Schoß",0,1,1,35,1650,"CCCVCC","CCCVC ","Schuss","Schoß","dif-phon-eq-orth",0,0,500
+"dif_phon_dif_orth","Wäsche","Nichte",0,2,2,1918,515,"CVCCCV","CVCCCV","Wäsche","Nichte","dif-phon-dif-orth",0,0,500
+"eq_phon_eq_orth","Knopf","Topf",1,1,1,599,955,"CCVCC","CVCC","Knopf","Topf","eq-phon-eq-orth",1,0,500
+"eq_phon_eq_orth","See","Tee",1,1,1,5809,2610,"CVV ","CVV","See","Tee","eq-phon-eq-orth",1,0,500
+"eq_phon_dif_orth","Haar","Jahr",1,1,1,5382,24153,"CVVC","CVCC","Haar","Jahr","eq-phon-dif-orth",1,0,500
+"dif_phon_eq_orth","blond","Mond",0,1,1,350,2380,"CCVCC","CVCC","blond","Mond","dif-phon-eq-orth",0,0,500
+"dif_phon_eq_orth","Weg","weg",0,1,1,23757,2470,"CVC","CVC","Weg","weg","dif-phon-eq-orth",0,0,500
+"dif_phon_dif_orth","sagen","kalt",0,2,1,34383,3293,"CVCVC","CVCC","sagen","kalt","dif-phon-dif-orth",0,0,500
+"eq_phon_dif_orth","malen","mahlen",1,2,2,1010,57,"CVCVC","CVCCVC","malen","mahlen","eq-phon-dif-orth",1,0,500
+"eq_phon_eq_orth","Ball","Knall",1,1,1,1388,392,"CVCC","CCVCC","Ball","Knall","eq-phon-eq-orth",1,0,500
+"dif_phon_dif_orth","wahr","Schüssel",0,2,2,6204,155,"CVCC","CCCVCCVC","wahr","Schüssel","dif-phon-dif-orth",0,0,500
+"eq_phon_eq_orth","drücken","bücken",1,2,2,1053,64,"CCVCCVC","CXCCXC","drücken","bücken","eq-phon-eq-orth",1,0,500
+"dif_phon_dif_orth","stark","Scheibe",0,1,2,15807,1281,"CCVCC","CCCVVCV","stark","Scheibe","dif-phon-dif-orth",0,0,500
+"dif_phon_eq_orth","Profil","April",0,2,2,600,3450,"CCVCVC","VCCVC","Profil","April","dif-phon-eq-orth",0,0,500
+"dif_phon_dif_orth","Schnitt","Schnabel",0,1,2,1007,1067,"CCCCVCC","CCCCVCVC","Schnitt","Schnabel","dif-phon-dif-orth",0,0,500
+"eq_phon_dif_orth","Mai","zwei",1,1,1,4327,63761,"CVV","CCVV","Mai","zwei","eq-phon-dif-orth",1,0,500
+"eq_phon_eq_orth","Schaf","Schlaf",1,1,1,340,3403,"CCCVC","CCCCVC","Schaf","Schlaf","eq-phon-eq-orth",1,0,500
+"dif_phon_eq_orth","Schach","Schmach",0,1,1,532,538,"CCCVCC","CCCCVCC","Schach","Schmach","dif-phon-eq-orth",0,0,500
+"eq_phon_dif_orth","Arm","lahm",1,1,1,7775,34,"VCC","CVCC","Arm","lahm","eq-phon-dif-orth",1,0,500
+"dif_phon_eq_orth","Loch","hoch",0,1,1,2133,11641,"CVCC","CVCC","Loch","hoch","dif-phon-eq-orth",0,0,500
+"dif_phon_dif_orth","Birne","Tisch",0,2,1,224,13807,"CVCCV","CVCCC","Birne","Tisch","dif-phon-dif-orth",0,0,500
+"dif_phon_eq_orth","kam","Kamm",0,1,1,45880,475,"CVC","CVCC","kam","Kamm","dif-phon-eq-orth",0,0,500
+"eq_phon_dif_orth","Schlag","Sarg",1,1,1,2930,1087,"CCCCVC","CVCC","Schlag","Sarg","eq-phon-dif-orth",1,0,500
+"eq_phon_eq_orth","Masse","Tasse",1,2,2,5222,1369,"CVCCV","CVCCV","Masse","Tasse","eq-phon-eq-orth",1,0,500
+"dif_phon_dif_orth","lass","Liter",0,1,2,76,1349,"CVCC","CVCVC ","lass","Liter","dif-phon-dif-orth",0,0,500
+"dif_phon_dif_orth","Box","Blume",0,1,2,184,1269,"CVC","CCVCV","Box","Blume","dif-phon-dif-orth",0,0,500
+"dif_phon_eq_orth","spukt","spuckt",0,1,1,74,177,"CCVCC","CCVCCC","spukt","spuckt","dif-phon-eq-orth",0,0,500
+"eq_phon_dif_orth","Seite","Saite",1,2,2,33337,186,"CVVCV","CVVCV","Seite","Saite","eq-phon-dif-orth",1,0,500
+"eq_phon_eq_orth","Sand","Brand",1,1,1,2438,2010,"CVCC","CCVCC","Sand","Brand","eq-phon-eq-orth",1,0,500
+"dif_phon_eq_orth","Beet","Bett",0,1,1,194,9953,"CVVC","CVCC","Beet","Bett","dif-phon-eq-orth",0,0,500
+"eq_phon_dif_orth","Ohr","Tor",1,1,1,3810,3104,"VCC","CVC","Ohr","Tor","eq-phon-dif-orth",1,0,500
+"eq_phon_dif_orth","schwer","leer",1,1,1,16318,3436,"CCCCVC","CVVC","schwer","leer","eq-phon-dif-orth",1,0,500
+"eq_phon_eq_orth","Schaum","Raum",1,1,1,402,14616,"CCCVVC","CVVC ","Schaum","Raum","eq-phon-eq-orth",1,0,500
+"dif_phon_eq_orth","Stab","ab",0,1,1,1226,5794,"CCVC","VC ","Stab","ab","dif-phon-eq-orth",0,0,500
+"eq_phon_dif_orth","Kleber","Tuba",1,2,2,39,40,"CCVCVC","CVCV ","Kleber","Tuba","eq-phon-dif-orth",1,0,500
+"dif_phon_eq_orth","gestern","Stern",0,2,1,11088,1948,"CVCCVCC","CCVCC","gestern","Stern","dif-phon-eq-orth",0,0,500
+"dif_phon_eq_orth","Ton","von",0,1,1,6716,973121,"CVC","CVC","Ton","von","dif-phon-eq-orth",0,0,500
+"dif_phon_eq_orth","Stahl","Stall",0,1,1,1366,1376,"CCVCC","CCVCC","Stahl","Stall","dif-phon-eq-orth",0,0,500
+"eq_phon_dif_orth","top","Galopp",1,1,2,4,311,"CVC","CVCVCC","top","Galopp","eq-phon-dif-orth",1,0,500
+"eq_phon_eq_orth","Torte","Worte",1,2,2,228,15264,"CVCCV","CVCCV","Torte","Worte","eq-phon-eq-orth",1,0,500
+"dif_phon_dif_orth","Fleisch","Reis",0,1,1,4927,923,"CCVVCCC","CVVC","Fleisch","Reis","dif-phon-dif-orth",0,0,500
+"eq_phon_eq_orth","Fliege","Ziege",1,2,2,526,364,"CCVVCV","CVVCV","Fliege","Ziege","eq-phon-eq-orth",1,0,500
+"dif_phon_dif_orth","Fall","Sport",0,1,1,21679,2011,"CVCC","CCVCC","Fall","Sport","dif-phon-dif-orth",0,0,500
+"eq_phon_eq_orth","Himmel","Schimmel",1,2,2,10569,298,"CVCCVC","CCCVCCVC","Himmel","Schimmel","eq-phon-eq-orth",1,0,500
+"eq_phon_eq_orth","Feuer","teuer",1,2,2,7125,1793,"CVVVC","CVVVC","Feuer","teuer","eq-phon-eq-orth",1,0,500
+"dif_phon_dif_orth","Blatt","Löwe",0,1,2,4150,147,"CCVCC","CVCV","Blatt","Löwe","dif-phon-dif-orth",0,0,500
+"eq_phon_eq_orth","Zwerg","Berg",1,1,1,311,2504,"CCVCC ","CVCC","Zwerg","Berg","eq-phon-eq-orth",1,0,500
+"eq_phon_eq_orth","Wind","Kind",1,1,1,4824,20924,"CVCC","CVCC","Wind","Kind","eq-phon-eq-orth",1,0,500
+"dif_phon_dif_orth","Henne","Schaufel",0,2,2,204,294,"CVCCV","CCCVVCVC","Henne","Schaufel","dif-phon-dif-orth",0,0,500
+"eq_phon_eq_orth","Spiele","Ziele",1,2,2,1665,6824,"CCVVCV","CVVCV","Spiele","Ziele","eq-phon-eq-orth",1,0,500
+"dif_phon_eq_orth","Bus","Mus",0,1,1,561,56,"CVC","CVC","Bus","Mus","dif-phon-eq-orth",0,0,500
+"eq_phon_dif_orth","Bär","Meer",1,1,1,519,5481,"CVC","CVVC","Bär","Meer","eq-phon-dif-orth",1,0,500
+"dif_phon_dif_orth","Ratte","Apfel",0,2,2,283,578,"CVCCV","CVVCV","Ratte","Apfel","dif-phon-dif-orth",0,0,500
+"eq_phon_dif_orth","blond","sonnt",1,1,1,350,27,"CCVCC","CVCCC","blond","sonnt","eq-phon-dif-orth",1,0,500
+"eq_phon_dif_orth","super","Opa",1,1,1,190,441,"CVCVC","VCV","super","Opa","eq-phon-dif-orth",1,0,500
+"dif_phon_eq_orth","Rast","rast",0,1,1,387,239,"CVCC","CVCC","Rast","rast","dif-phon-eq-orth",0,0,500
+"eq_phon_eq_orth","Hand","Land",1,1,1,40957,20848,"CVCC","CVCC","Hand","Land","eq-phon-eq-orth",1,0,500
+"dif_phon_dif_orth","Insel","Gasse",0,2,2,5098,1050,"CVVCV","CVCCV","Insel","Gasse","dif-phon-dif-orth",0,0,500
+"dif_phon_dif_orth","Papier","Stuhl",0,2,1,5088,4043,"CVCVVC","CCVCC","Papier","Stuhl","dif-phon-dif-orth",0,0,500
+"eq_phon_dif_orth","Lied","Lid",1,1,1,3087,61,"CVVC","CVC","Lied","Lid","eq-phon-dif-orth",1,0,500
+"dif_phon_dif_orth","Tag","Frieden",0,1,2,27937,12195,"CVC","CCVVCVC","Tag","Frieden","dif-phon-dif-orth",0,0,500
+"eq_phon_dif_orth","Holz","Hals",1,1,1,4797,4698,"CVCC","CVCC","Holz","Hals","eq-phon-dif-orth",1,0,500
+"eq_phon_dif_orth","Rad","Tat",1,1,1,1275,10222,"CVC","CVC","Rad","Tat","eq-phon-dif-orth",1,0,500

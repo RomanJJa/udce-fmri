@@ -1,0 +1,33 @@
+﻿"task","word_pt_1","word_pt_2","correct","Error_position_syllable","Error_position","prefix","suffix","type_pref_suf","word_frequency","CV_word_complete","stim1","stim2","condition","stim1_correct","is_null","isi"
+"morph_task","Ab","schied",1,0,"na",1,0,"ab",3004,"VCCCCVVC","Ab","schied","prefix",1,0,500
+"morph_task","In","recht",0,1,"na",1,0,"in",0,"VCCVCCC","In","recht","prefix",0,0,500
+"morph_task","Ab","bau",1,0,"na",1,0,"ab",1368,"VCCVV","Ab","bau","prefix",1,0,500
+"morph_task","Frei","nis",0,2,"na",0,1,"nis",0,"CCVVCVC","Frei","nis","suffix",0,0,500
+"morph_task","Freund","schaft",1,0,"na",0,1,"schaft",5328,"CCVVCCCCCVCC","Freund","schaft","suffix",1,0,500
+"morph_task","Zeug","nis",1,0,"na",0,1,"nis",2171,"CVVCCVC","Zeug","nis","suffix",1,0,500
+"morph_task","Un","recht",1,0,"na",1,0,"un ",2812,"VCCVCCC","Un","recht","prefix",1,0,500
+"morph_task","Ab","weis",0,1,"na",1,0,"ab",0,"VCCVVC","Ab","weis","prefix",0,0,500
+"morph_task","Hoff","schaft",0,2,"na",0,1,"schaft",0,"CVCCCCCVCC","Hoff","schaft","suffix",0,0,500
+"morph_task","In","schied",0,1,"na",1,0,"in",0,"VCCCCVVC","In","schied","prefix",0,0,500
+"morph_task","Frei","heit",1,0,"na",0,1,"heit",15335,"CCVVCVVC","Frei","heit","suffix",1,0,500
+"morph_task","Ab","such",0,1,"na",1,0,"ab",0,"VCCVCC","Ab","such","prefix",0,0,500
+"morph_task","Zeit","schaft",1,2,"na",0,1,"schaft",0,"CVVCCCCVCC","Zeit","schaft","suffix",1,0,500
+"morph_task","Ab","fall",1,0,"na",1,0,"ab",650,"VCCVCC","Ab","fall","prefix",1,0,500
+"morph_task","Un","fug",1,0,"na",1,0,"un ",551,"VCCVC","Un","fug","prefix",1,0,500
+"morph_task","Un","dacht",0,1,"na",1,0,"un ",0,"VCCVCCC","Un","dacht","prefix",0,0,500
+"morph_task","Zeug","heit",0,2,"na",0,1,"heit",0,"CVVCCVVC","Zeug","heit","suffix",0,0,500
+"morph_task","In","bau",0,1,"na",1,0,"in",0,"VCCVV","In","bau","prefix",0,0,500
+"morph_task","Ort","schaft",1,0,"na",0,1,"schaft",341,"VCCCCCVCC","Ort","schaft","suffix",1,0,500
+"morph_task","Bot","schaft",1,0,"na",0,1,"schaft",4004,"CVCCCCVCC","Bot","schaft","suffix",1,0,500
+"morph_task","Frei","keit",0,2,"na",0,1,"keit",0,"CCVVCVVC","Frei","keit","suffix",0,0,500
+"morph_task","Un","fall",1,0,"na",1,0,"un ",906,"VCCVCC","Un","fall","prefix",1,0,500
+"morph_task","Wahr ","keit",0,2,"na",0,1,"keit",0,"CVCCCVVC","Wahr ","keit","suffix",0,0,500
+"morph_task","Un","glück",1,0,"na",1,0,"un ",3168,"VCCCVCC","Un","glück","prefix",1,0,500
+"morph_task","In","glück",0,1,"na",1,0,"in",0,"VCCCVCC","In","glück","prefix",0,0,500
+"morph_task","Schön","heit",1,0,"na",0,1,"heit",4594,"CCCVCCVVC","Schön","heit","suffix",1,0,500
+"morph_task","Wahr ","heit",1,0,"na",0,1,"heit",12745,"CVCCCVVC","Wahr ","heit","suffix",1,0,500
+"morph_task","Un","such",0,1,"na",1,0,"un ",0,"VCCVCC","Un","such","prefix",0,0,500
+"morph_task","Herr","schaft",0,0,"na",0,1,"schaft",6319,"CVCCCCCVCC","Herr","schaft","suffix",0,0,500
+"morph_task","Bot","ung",0,2,"na",0,1,"ung",0,"CVCVCC","Bot","ung","suffix",0,0,500
+"morph_task","Ab","bruch",1,0,"na",1,0,"ab",1057,"VCCCVCC","Ab","bruch","prefix",1,0,500
+"morph_task","Freund","ung ",0,2,"na",0,1,"ung",0,"CCVVCCVCC","Freund","ung ","suffix",0,0,500

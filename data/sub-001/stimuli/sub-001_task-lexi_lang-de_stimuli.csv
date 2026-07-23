@@ -1,0 +1,33 @@
+﻿"task","word_pt_1","word_pt_2","correct","Error_position_syllable","Error_position","prefix","suffix","type_pref_suf","word_frequency","CV_word_complete","stim1","stim2","condition","stim1_correct","is_null","isi"
+"lex_task","Hei","zung",1,0,0,"na","na","na","406","CVVCVCC","Hei","zung","real-word",1,0,500
+"lex_task","To","fel",0,1,2,"na","na","na",".","CVCVC","To","fel","prefix-false",0,0,500
+"lex_task","Fah","ne",1,0,0,"na","na","na","1688","CVCCV","Fah","ne","real-word",1,0,500
+"lex_task","So","fa",1,0,0,"na","na","na","1196","CVCV ","So","fa","real-word",1,0,500
+"lex_task","Ta","fel",1,0,0,"na","na","na","3611","CVCVC","Ta","fel","real-word",1,0,500
+"lex_task","Zan","ne",0,1,1,"na","na","na",".","CVCCV","Zan","ne","prefix-false",0,0,500
+"lex_task","Kö","chen",0,2,2,"na","na","na",".","CVCCVC","Kö","chen","suffix-false",0,0,500
+"lex_task","Bo","den",1,0,0,"na","na","na","18321","CVCVC","Bo","den","real-word",1,0,500
+"lex_task","Pa","per",0,2,2,"na","na","na",".","CVCVC","Pa","per","suffix-false",0,0,500
+"lex_task","Kö","nig",1,0,0,"na","na","na","14090","CVCVC","Kö","nig","real-word",1,0,500
+"lex_task","Ta","ler",1,0,0,"na","na","na","713","CVCVC","Ta","ler","real-word",1,0,500
+"lex_task","Mo","nat",1,0,0,"na","na","na","3965","CVCVC","Mo","nat","real-word",1,0,500
+"lex_task","Ta","lu",0,2,3,"na","na","na",".","CVCV","Ta","lu","suffix-false",0,0,500
+"lex_task","Fe","mo",0,1,1,"na","na","na",".","CVCV","Fe","mo","prefix-false",0,0,500
+"lex_task","Flas","se ",0,2,1,"na","na","na",".","CCVCCV","Flas","se ","suffix-false",0,0,500
+"lex_task","De","mo",1,0,0,"na","na","na","55","CVCV","De","mo","real-word",1,0,500
+"lex_task","Hei","sung",0,2,1,"na","na","na",".","CVVCVCC","Hei","sung","suffix-false",0,0,500
+"lex_task","Re","gal",1,0,0,"na","na","na","353","CVCVC","Re","gal","real-word",1,0,500
+"lex_task","Bu","me",0,1,1,"na","na","na",".","CVCV","Bu","me","prefix-false",0,0,500
+"lex_task","Blu","me",1,0,0,"na","na","na","1269","CCVCV","Blu","me","real-word",1,0,500
+"lex_task","Kö","chin",1,0,0,"na","na","na","542","CVCCVC","Kö","chin","real-word",1,0,500
+"lex_task","Lo","fa",0,1,1,"na","na","na",".","CVCV","Lo","fa","prefix-false",0,0,500
+"lex_task","Er","de ",1,0,0,"na","na","na","13903","VCCV","Er","de ","real-word",1,0,500
+"lex_task","Fah","no",0,2,2,"na","na","na",".","CVCCV","Fah","no","suffix-false",0,0,500
+"lex_task","Fla","sche",1,0,0,"na","na","na","2800","CCVCCCV","Fla","sche","real-word",1,0,500
+"lex_task","Pa","pier",1,0,0,"na","na","na","5088","CVCVVC","Pa","pier","real-word",1,0,500
+"lex_task","Er","da",0,2,3,"na","na","na",".","VCCV","Er","da","suffix-false",0,0,500
+"lex_task","Ra","gal",0,1,2,"na","na","na",".","CVCVC","Ra","gal","prefix-false",0,0,500
+"lex_task","Bo","sen",0,2,1,"na","na","na",".","CVCVC","Bo","sen","suffix-false",0,0,500
+"lex_task","Tan","ne",1,0,0,"na","na","na","143","CVCCV","Tan","ne","real-word",1,0,500
+"lex_task","Kü","nig",0,1,2,"na","na","na",".","CVCVC","Kü","nig","prefix-false",0,0,500
+"lex_task","Mu","nat",0,1,2,"na","na","na",".","CVCVC","Mu","nat","prefix-false",0,0,500

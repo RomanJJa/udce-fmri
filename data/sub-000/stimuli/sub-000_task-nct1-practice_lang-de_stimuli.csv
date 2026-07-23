@@ -1,0 +1,5 @@
+﻿"number1","number2","distance","num1_greater","num2_greater","stim1","stim2","condition","stim1_correct","is_null","isi"
+6,9,3,0,1,"6","9","dist-3-4",0,0,500
+8,7,1,1,0,"8","7","dist-1-2",1,0,500
+4,1,3,1,0,"4","1","dist-3-4",1,0,500
+2,3,1,0,1,"2","3","dist-1-2",0,0,500

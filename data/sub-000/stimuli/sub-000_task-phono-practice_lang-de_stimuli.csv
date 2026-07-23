@@ -1,0 +1,5 @@
+﻿"orthography_phonology","word_1","word_2","does_rhyme","syllables_word_1","syllables_word_2","word_1_frequency","word_2_frequency","CV_word_1","CV_word_2","stim1","stim2","condition","stim1_correct","is_null","isi"
+"example_instruction","Haus","Maus",1,1,1,20373,754,"CVVC","CVVC","Haus","Maus","example-instruction",1,0,500
+"example_instruction","Sonne","Land",0,2,1,9570,20848,"CVCCV","CVCC","Sonne","Land","example-instruction",0,0,500
+"example_instruction","Wal","kahl",1,1,1,93,332,"CVC","CVCC","Wal","kahl","example-instruction",1,0,500
+"example_instruction","Rubin","Diebin",0,2,2,99,25,"CVCVC","CVVCVC","Rubin","Diebin","example-instruction",0,0,500

@@ -1,0 +1,8 @@
+﻿"num1","num2","dec1","unit1","dec2","unit2","dec_dist","unit_dist","num_dist","min_dec","max_dec","min_unit","max_unit","min_num","max_num","vig1","vig2","b20u1","b20u2","within_dec","within_vig","comp","comp_b20","greater60","smaller60","num1_greater","num2_greater","condition","orig_item","dist_discrepancy","dec_pair","matched_group","stim1","stim2","stim1_correct","is_null","isi","stim_shift"
+13,15,1,3,1,5,0,2,2,1,1,3,5,13,15,1,1,3,5,TRUE,FALSE,FALSE,FALSE,FALSE,TRUE,0,1,"sm60_b10w_b20w","13_15",0,"10s_10s","10s_10s_0","13","  15",0,0,500,"stim2-tilt-right"
+94,25,9,4,2,5,7,1,69,2,9,4,5,25,94,8,2,14,5,FALSE,FALSE,FALSE,TRUE,FALSE,FALSE,1,0,"mix60_b10i_b20c","24_95",2,"20s_90s","20s_90s_1","  94","25",1,0,500,"stim1-tilt-right"
+57,98,5,7,9,8,4,1,41,5,9,7,8,57,98,5,8,7,18,FALSE,FALSE,TRUE,TRUE,FALSE,FALSE,0,1,"mix60_b10c_b20c","57_98",0,"50s_90s","50s_90s_0","57  ","98",0,0,500,"stim1-tilt-left"
+NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,"null_event",NA,NA,NA,NA,"##","##",NA,1,NA,"no-tilt"
+84,23,8,4,2,3,6,1,61,2,8,3,4,23,84,8,2,4,3,FALSE,FALSE,TRUE,TRUE,FALSE,FALSE,1,0,"mix60_b10c_b20c","23_84",0,"20s_80s","20s_80s_1","84","23  ",1,0,500,"stim2-tilt-left"
+31,69,3,1,6,9,3,8,38,3,6,1,9,31,69,3,6,1,9,FALSE,FALSE,TRUE,TRUE,FALSE,FALSE,0,1,"mix60_b10c_b20c","31_69",0,"30s_60s","30s_60s_0","31  ","69",0,0,500,"stim1-tilt-left"
+78,76,7,8,7,6,0,2,2,7,7,6,8,76,78,6,6,18,16,TRUE,FALSE,FALSE,FALSE,TRUE,FALSE,1,0,"gr60_b10w_b20w","76_78",0,"70s_70s","70s_70s_1","78","76",1,0,500,"no-tilt"

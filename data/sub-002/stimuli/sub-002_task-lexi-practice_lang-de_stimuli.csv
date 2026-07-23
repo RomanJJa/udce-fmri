@@ -1,0 +1,5 @@
+﻿"task","word_pt_1","word_pt_2","correct","Error_position_syllable","Error_position","prefix","suffix","type_pref_suf","word_frequency","CV_word_complete","stim1","stim2","condition","stim1_correct","is_null","isi"
+"example_instruction_morph","Dän","ke",0,1,"na","na","na","ke","na","CVCCV","Dän","ke","prefix-false",0,0,500
+"example_instruction_morph","Dan","ke",1,0,"na","na","na","ke","na","CVVCVCCV","Dan","ke","word-true",1,0,500
+"example_instruction_morph","Un","kraut",1,0,"0","na","na","un","na","VCCCVVC","Un","kraut","word-true",1,0,500
+"example_instruction_morph","Un","kreut",0,2,"na","na","na","un","na","VCCCVVC","Un","kreut","suffix-false",0,0,500
